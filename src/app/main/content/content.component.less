@@ -1,0 +1,277 @@
+@import "../../../assets/styles/global";
+
+
+#first_section {
+  height: 100vh;
+}
+
+
+#about_section {
+  height: auto;
+  background-color: blue;
+}
+.separator {
+  height: @navbar_height;
+}
+.left_first {
+  .center-text;
+  height: 100vh;
+}
+.right_first {
+  background-color: dimgray;
+}
+.homesection {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#first_btn_wrapper {
+
+  margin: 60px -10px 0;
+  background-color: red;
+
+  button {
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+  @media @small {
+    margin-top: 100px;
+  }
+}
+#pawelbold {
+  color: @main-color;
+}
+#span_developer {
+  color: @main-color;
+}
+
+
+                            //About me section
+      #about_section {
+        height: auto;
+        @media @medium {
+          height: 100vh;
+        }
+      }
+      #about_right {
+        background-color: red;
+      }
+
+
+                    //Abilities section
+          #abilities_section {
+            padding-bottom: 40px;
+            @media @medium {
+              padding-bottom: 100px;
+            }
+          }
+
+      #abilisties_ul {
+      .list-style-none;
+
+        .w(100%);
+              li {
+                background-color: lightgray;
+                line-height: 26px;
+                margin-top: 10px;
+                font-size: 13px;
+                padding: 0;
+                .w(100%);
+
+                .d-inline;
+                border-radius: 5px;
+                clear: both;
+                @media @medium {
+                  width: calc(50% - 10px);
+                  margin-left: 10px;
+                }
+                        div {
+                          background-color: lighten(darkred, 10%);
+                          color: white;
+                          line-height: 26px;
+                          border-radius: 5px;
+                          .d-inline;
+                            span {
+                              padding: 5px;
+                              border-radius: 5px 0 0 5px;
+                              background-color: darkred;
+                            }
+
+                        }
+
+              }
+        li > span {
+          float: right;
+          margin-right: 5px;
+        }
+      }
+
+      .eighty {
+        .w(80%);
+      }
+      .sixty {
+        .w(60%);
+      }
+      .fourty {
+        .w(40%);
+      }
+      .fifty {
+        .w(50%);
+      }
+      .progress-bar-striped {
+        text-align: left;
+        line-height: 26px !important;
+      }
+      .progress {
+        .w(50%);
+        height: 26px !important;
+      }
+
+      .progress-bar {
+      }
+      .progress-bar-animated {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+
+
+
+
+      //Portfolio Section
+              #portfolio_section {
+                background-color: gray;
+                padding-bottom: 40px;
+                padding-right: 10px;
+                @media @medium {
+                  padding-bottom: 100px;
+                }
+              }
+              .one_project {
+                border: 1px solid whitesmoke;
+                .w-calc(50%, 12px);
+                margin-left: 10px;
+                margin-top: 10px;
+                height: 300px;
+                .d-inline;
+                @media @medium {
+                  .w-calc(33.333%, 12px);
+                  height: 400px;
+                }
+              }
+
+                  //Contact Section
+              #contact_section {
+                padding-bottom: 80px;
+                position: relative;
+                @media @medium {
+                  padding-bottom: 120px;
+                }
+              }
+              #contact_header {
+                margin-bottom: 40px;
+              }
+              .footer {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                padding: 5px;
+                .center-text;
+                .w(100%);
+                background-color: @main-color;
+              }
+
+              .half-width {
+                .w-calc(50%, 20px);
+                margin-left: 20px;
+              }
+              .full-width {
+                margin-left: 20px;
+                .w-calc(100%, 20px);
+              }
+              #btn_wrapper {
+                .w(100%);
+                .center-text;
+              }
+              .myform {
+                margin-top: 40px;
+                @media @medium {
+                  margin-top: 110px;
+                }
+              }
+              .left_contact_wrapper {
+                font-size: 130%;
+                div {
+                  span {
+                    color: @main-color;
+                    font-weight: bold;
+                  }
+                  a{
+                    color: gray !important;
+                  }
+                }
+
+              }
+                .form-control {
+
+                  &:focus {
+                    box-shadow: none !important;
+                    border: 1px solid @main-color;
+                  }
+                }
+
+
+
+
+                      //every section
+                  .hearder_section {
+                    margin: 40px 0;
+                    .center-text;
+                    color: @main-color;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-size: 50px !important;
+                    @media @medium {
+                      margin: 100px 0;
+                    }
+                  }
+                  .myhoverbtn {
+                    font-size: 22px;
+                    overflow: hidden;
+                    border: @main-color 1px solid;
+                    &:after {
+                      background-color: @main-color;
+                      width: 0;
+                      height: 100%;
+                      top: 0;
+                      left: 0;
+                    }
+                    &:hover&:after {
+                      width: 100%;
+                    }
+                  }
+                  ::ng-deep .mat-button-focus-overlay {
+                    background-color: @main-color !important;
+                  }
+
+                  .header_btn {
+                    position: relative;
+                    &:after {
+                      content: '';
+                      position: absolute;
+                      z-index: -1;
+                      width: 1%;
+                      height: 100%;
+                      left: 0;
+                      top: 0;
+                      -webkit-transition: all 0.3s;
+                      -moz-transition: all 0.3s;
+                      transition: all 0.3s;
+                      background-color: @main-color;
+                    }
+                    &:hover&:after {
+                      width: 100%;
+                    }
+                  }
+

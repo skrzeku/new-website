@@ -1,0 +1,139 @@
+
+
+
+
+<section id="first_section">
+      <!-- navigation-->
+  <app-navigation #navigation></app-navigation>
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-6 left_first">
+        <div class="homesection" >
+          <p>Witam</p>
+           <p>nazywam się</p> <h1><b id="pawelbold">Paweł Skrzeszewski</b><br />
+             front-end <span id="span_developer">d</span><span>eveloper</span> </h1>
+        <button mat-raised-button class="header_btn">Poznaj Mnie!</button>
+
+
+        </div>
+
+      </div>
+      <div class="col-12 col-md-6 right_first">background img grafik or canvas</div>
+
+    </div>
+
+  </div>
+</section>
+                  <!-- 2nd section-->
+        <section id="about_section" #about_section>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12 center-text">
+                <h2 class="hearder_section">O MNIE</h2>
+              </div>
+              <div class="col-12 offset-md-1 col-md-6" id="about_left">
+                Pochodzę z Polski i mam 27 lat. Dorastałem w małym mieście nieopodal Olsztyna. Ukończyłem Uniwersytet Warmińsko-Mazurski z tytułem inżyniera na kierunku Zarządzanie
+                i Inżynieria Produkcji.
+                Obecnie mieszkam w Gdańsku i rozwijam się dalej jako front-end developer w pracy z własnymi projektami.
+                Jestem otwarty na wszelkie formy współpracy które pozwolą mi doskonalić moją wiedzę. Prywatnie jestem bardzo miłym człowiekiem,
+                uwielbiam piłkę nożną, kolarstwo i dobrą kawę :)
+              </div>
+              <div class="col-12 col-md-4" id="about_right">
+                zdjęcie
+              </div>
+            </div>
+          </div>
+        </section>
+
+                        <!-- 3nd section-->
+                        <section id="abilities_section">
+                          <div class="container-fluid">
+                            <div class="row">
+                              <div class="col-12" #col12heared>
+                                <h2 class="hearder_section" >Umiejętności</h2>
+                              </div>
+                              <div class="col-12 offset-md-1 col-md-10 abilities_rows">
+                                <ul id="abilisties_ul" class="m-0 p-0" >
+
+                                    <!--<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 80%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><span>HTML5</span></div> -->
+
+                                  <li class="progress-bar-striped"><div class="eighty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>HTML5</span></div><span>80%</span></li>
+                                  <li class="progress-bar-striped"><div class="eighty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>CSS/LESS/SCSS</span></div><span>80%</span></li>
+                                  <li class="progress-bar-striped"><div class="eighty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>Angular 4+</span></div><span>80%</span></li>
+                                  <li class="progress-bar-striped"><div  class="eighty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>JavaScript, TypeScript</span></div><span>80%</span></li>
+                                  <li class="progress-bar-striped"><div class="sixty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>Bootstrap</span></div><span>60%</span></li>
+                                  <li class="progress-bar-striped"><div class="fourty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>TDD, Jasmine, Karma</span></div><span>40%</span></li>
+                                  <li class="progress-bar-striped"><div class="sixty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>RWD</span></div><span>60%</span></li>
+                                  <li class="progress-bar-striped"><div  class="fifty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>SEO</span></div><span>50%</span></li>
+                                  <li class="progress-bar-striped"><div  class="fourty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>Git, Webpack</span></div><span>40%</span></li>
+                                  <li class="progress-bar-striped"><div  class="sixty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>NPM</span></div><span>60%</span></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+
+        <!-- Portfolio section-->
+          <section id="portfolio_section">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12">
+                  <h2 class="hearder_section" >Portfolio</h2>
+                </div>
+                <div class="col-12 offset-md-1 col-md-10">
+                  <div class="one_project" *ngFor="let project of projects">
+                    {{project.name}}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        <!-- Contact section-->
+        <section id="contact_section">
+          <div class="container-fluid">
+            <div class="row">
+
+                      <!-- Left Side-->
+              <div class="col-12 offset-md-1 col-md-5">
+                <h2 class="hearder_section" id="contact_header" >Kontakt</h2>
+                <div class="left_contact_wrapper">
+                  <div><span>E-mail:</span> <a href="mailto:pawelskrzeszewski92@gmail.com"> pawelskrzeszewski92@gmail.com</a></div>
+                  <div><span>Github:</span> <a href="https://github.com/skrzeku"> https://github.com/skrzeku</a></div>
+                  <div><span>LinkedIn:</span> <a href="https://www.linkedin.com/in/paweł-skrzeszewski-847a3413a/"> /in/paweł-skrzeszewski-847a3413a/</a></div>
+                  <div><span>Telefon:</span> +48 512070640</div>
+                </div>
+              </div>
+
+                    <!-- Right Side-->
+              <div class="col-12 col-md-5" id="contact_wrapper">
+                <form class="myform">
+
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Imię i nazwisko" [ngModel]="name" name="name">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="exampleInputPassword1" placeholder="E-mail" [ngModel]="email" name="email">
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Treść wiadomości" [ngModel]="content" name="content"></textarea>
+                  </div>
+                </form>
+                <div id="btn_wrapper">
+                  <button mat-raised-button class="header_btn">Wyślij</button>
+                </div>
+
+
+
+
+              </div>
+              <div class="col-12 footer">
+                <h6>Copyright © 2018 Website - Paweł Skrzeszewski all rights reserved.</h6>
+              </div>
+
+            </div>
+          </div>
+        </section>

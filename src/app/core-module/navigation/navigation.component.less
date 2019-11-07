@@ -1,0 +1,60 @@
+
+@import "../../../assets/styles/global";
+.fixed_navi {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: dimgray;
+  height: 0;
+  opacity: 0;
+  z-index: 99;
+  transition: height 0.5s ease;
+  -webkit-transition: height 0.5s ease;
+
+}
+.row {
+
+}
+.navi_list, .logo, .menu_bars {
+
+}
+.navi_list {
+  list-style: none;
+}
+
+.logo {
+  //height: @navbar_height;
+  width: auto;
+  line-height: @navbar_height;
+}
+.navigate {
+  width: 20%;
+  text-align: center;
+  .c-pointer !important;
+  font-size: 20px;
+  line-height: @navbar_height;
+  &:hover {
+    background-color: white;
+  }
+}
+
+
+.active_navi {
+  color: red;
+}
+
+
+
+
+      //make it fixed after scroll
+    .fixed_navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      opacity: 1;
+      height: @navbar_height;
+      transition: all 0.5s ease;
+      -webkit-transition: all 0.5s ease;
+
+    }
+

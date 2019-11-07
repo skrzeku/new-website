@@ -1,0 +1,98 @@
+@import "variables";
+@import '../../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
+
+//media queries
+@x-small: ~'only screen and (max-width: 767px)';
+@small: ~'only screen and (min-width: 768px)';
+@medium: ~'only screen and (min-width: 992px)';
+@large: ~'only screen and (min-width: 1400px)';
+@just-small: ~'only screen and (min-width: 768px) and (max-width: 991px)';
+
+
+
+//layout
+.d-inline {
+  display: inline-block;
+}
+.d-block {
+  display: block;
+}
+.d-none {
+  display: none;
+}
+.c-pointer {
+  cursor: pointer;
+}
+.center-text {
+  text-align: center;
+}
+.list-style-none {
+  list-style: none;
+}
+.w(@how_many) {
+  width: @how_many;
+}
+.w-calc(@how_many, @less) {
+  width: calc(@how_many - @less);
+}
+.font-bold {
+  font-weight: bold;
+}
+.basic_transition {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+//animation
+.keyframes (@name; @what-to-do) {
+
+  @-webkit-keyframes @name {
+    @what-to-do();
+  }
+  @-ms-keyframes @name {
+    @what-to-do();
+  }
+  @keyframes @name {
+    @what-to-do();
+  }
+  @-moz-keyframes @name {
+    @what-to-do();
+  }
+  @-o-keyframes @name {
+    @what-to-do();
+  }
+}
+
+.animation(@arguments) {
+  -webkit-animation: @arguments;
+  -moz-animation: @arguments;
+  animation: @arguments;
+}
+      //btn animation
+.btn {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  .c-pointer;
+  padding: 10px 20px;
+  display: inline-block;
+  margin: 15px 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
