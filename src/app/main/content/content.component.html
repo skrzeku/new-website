@@ -3,8 +3,6 @@
 
 
 <section id="first_section">
-      <!-- navigation-->
-  <app-navigation #navigation></app-navigation>
 
 
   <div class="container-fluid">
@@ -14,13 +12,18 @@
           <p>Witam</p>
            <p>nazywam się</p> <h1><b id="pawelbold">Paweł Skrzeszewski</b><br />
              front-end <span id="span_developer">d</span><span>eveloper</span> </h1>
-        <button mat-raised-button class="header_btn">Poznaj Mnie!</button>
+        <button mat-raised-button class="header_btn" (click)="ScrollToElement('#about_section')">Poznaj Mnie!</button>
 
 
         </div>
 
       </div>
-      <div class="col-12 col-md-6 right_first">background img grafik or canvas</div>
+      <div class="d-none col-md-6 d-md-inline-block right_first">
+        <canvas id="mycanvas" #canvas>
+
+        </canvas>
+        <button (click)="drawball()"></button>
+      </div>
 
     </div>
 
@@ -28,10 +31,13 @@
 </section>
                   <!-- 2nd section-->
         <section id="about_section" #about_section>
+          <!-- navigation-->
+          <app-navigation #navigation></app-navigation>
+
           <div class="container-fluid">
             <div class="row">
               <div class="col-12 center-text">
-                <h2 class="hearder_section">O MNIE</h2>
+                <h2 class="hearder_section" [ngClass]="{'header_show': about_header_boolean}">O MNIE</h2>
               </div>
               <div class="col-12 offset-md-1 col-md-6" id="about_left">
                 Pochodzę z Polski i mam 27 lat. Dorastałem w małym mieście nieopodal Olsztyna. Ukończyłem Uniwersytet Warmińsko-Mazurski z tytułem inżyniera na kierunku Zarządzanie
@@ -41,18 +47,18 @@
                 uwielbiam piłkę nożną, kolarstwo i dobrą kawę :)
               </div>
               <div class="col-12 col-md-4" id="about_right">
-                zdjęcie
+                <div class="rounded-img" [ngClass]="{'rounded_shown': about_header_boolean}"><div><i class="fab fa-linkedin-in"></i></div></div>
               </div>
             </div>
           </div>
         </section>
 
                         <!-- 3nd section-->
-                        <section id="abilities_section">
+                        <section id="abilities_section" #abilities>
                           <div class="container-fluid">
                             <div class="row">
                               <div class="col-12" #col12heared>
-                                <h2 class="hearder_section" >Umiejętności</h2>
+                                <h2 class="hearder_section" [ngClass]="{'header_show': skill_header_boolean}">Umiejętności</h2>
                               </div>
                               <div class="col-12 offset-md-1 col-md-10 abilities_rows">
                                 <ul id="abilisties_ul" class="m-0 p-0" >
@@ -76,13 +82,13 @@
                         </section>
 
         <!-- Portfolio section-->
-          <section id="portfolio_section">
+          <section id="portfolio_section" #portfolio>
             <div class="container-fluid">
               <div class="row">
                 <div class="col-12">
-                  <h2 class="hearder_section" >Portfolio</h2>
+                  <h2 class="hearder_section" [ngClass]="{'header_show': portfolio_header_boolean}">Portfolio</h2>
                 </div>
-                <div class="col-12 offset-md-1 col-md-10">
+                <div class="col-12 offset-md-1 col-md-10 p-0">
                   <div class="one_project" *ngFor="let project of projects">
                     {{project.name}}
                   </div>
@@ -93,13 +99,13 @@
           </section>
 
         <!-- Contact section-->
-        <section id="contact_section">
+        <section id="contact_section" #contact>
           <div class="container-fluid">
             <div class="row">
 
                       <!-- Left Side-->
               <div class="col-12 offset-md-1 col-md-5">
-                <h2 class="hearder_section" id="contact_header" >Kontakt</h2>
+                <h2 class="hearder_section" id="contact_header" [ngClass]="{'header_show': contact_header_boolean}">Kontakt</h2>
                 <div class="left_contact_wrapper">
                   <div><span>E-mail:</span> <a href="mailto:pawelskrzeszewski92@gmail.com"> pawelskrzeszewski92@gmail.com</a></div>
                   <div><span>Github:</span> <a href="https://github.com/skrzeku"> https://github.com/skrzeku</a></div>
@@ -123,17 +129,24 @@
                   </div>
                 </form>
                 <div id="btn_wrapper">
-                  <button mat-raised-button class="header_btn">Wyślij</button>
+                  <button mat-raised-button class="header_btn" (click)="rollIcons()">Wyślij</button>
                 </div>
-
-
-
-
               </div>
+
               <div class="col-12 footer">
-                <h6>Copyright © 2018 Website - Paweł Skrzeszewski all rights reserved.</h6>
-              </div>
+                <div id="footer_icons">
+                  <span id="facebook_span">
+                    <i class="fab fa-facebook" [ngClass]="{'roll_facebook': spansboolean}"></i>
+                  </span>
+                  <span id="linked_span">
+                    <i class="fab fa-linkedin-in"></i>
+                  </span>
+                  <span>
+                    <i class="fab fa-github" [ngClass]="{'roll_github': spansboolean}"></i>
+                  </span>
 
+                </div>
+              </div>
             </div>
           </div>
         </section>

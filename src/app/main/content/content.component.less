@@ -1,14 +1,39 @@
 @import "../../../assets/styles/global";
 
 
+
+.keyframes(rollimg, {
+0% {
+  //right: -300px;
+.rotate(10deg);
+
+}
+60% {
+  //right: 90px;
+.rotate(369deg);
+}
+100% {
+  //right: 0;
+}
+});
+
+
+
 #first_section {
   height: 100vh;
+}
+#mycanvas {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: gray;
 }
 
 
 #about_section {
   height: auto;
   background-color: blue;
+  .relative;
 }
 .separator {
   height: @navbar_height;
@@ -16,9 +41,17 @@
 .left_first {
   .center-text;
   height: 100vh;
+  background-color: gray;
+        @media @small {
+          background-color: whitesmoke;
+        }
+            button {
+              margin-top: 20px;
+            }
 }
 .right_first {
   background-color: dimgray;
+  padding: 0;
 }
 .homesection {
   position: relative;
@@ -55,6 +88,30 @@
       }
       #about_right {
         background-color: red;
+      }
+      .rounded-img {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        margin: 0 auto;
+        right: -300px;
+        .rotate(10deg);
+        background-image: url("../../../assets/images/brown-wooden-dock-over-body-of-water-1227520.jpg");
+        background-size: cover;
+        background-position: center center;
+        .relative;
+        div {
+          .relative;
+          top: 100px;
+          left: 150px;
+        }
+      }
+      .rounded_shown {
+        opacity: 1;
+        right: 0;
+        .rotate(360deg);
+        //.custom_transition(all 0.9s linear);
+        .animation(rollimg 1.2s linear);
       }
 
 
@@ -156,7 +213,7 @@
                 height: 300px;
                 .d-inline;
                 @media @medium {
-                  .w-calc(33.333%, 12px);
+                  .w-calc(33.333%, 17px);
                   height: 400px;
                 }
               }
@@ -172,11 +229,17 @@
               #contact_header {
                 margin-bottom: 40px;
               }
+              .header_show {
+                .custom_transition(0.6s all ease-in);
+                opacity: 1 !important;
+                top: 0 !important;
+              }
               .footer {
                 position: absolute;
                 bottom: 0;
                 left: 0;
                 padding: 5px;
+                color: whitesmoke;
                 .center-text;
                 .w(100%);
                 background-color: @main-color;
@@ -232,6 +295,9 @@
                     font-weight: bold;
                     text-transform: uppercase;
                     font-size: 50px !important;
+                    opacity: 0;
+                    top: -100px;
+                    .relative;
                     @media @medium {
                       margin: 100px 0;
                     }
@@ -274,4 +340,75 @@
                       width: 100%;
                     }
                   }
+                  #linked_span {
+                    background-color: whitesmoke;
+                    display: inline-block;
+                    .relative;
+                    border-radius: 50%;
+                    width: 44px !important;
+                    height: 44px !important;
+                    text-align: center;
+                    top: -3px;
+                              i {
+                                color: @main-color;
+                                font-size: 34px!important;
+                                line-height: 44px;
+                              }
+                      &:hover i {
+                        color: white;
+                      }
+                      &:hover {
+                        background-color: darken(@main-color, 20%);
+                      }
+                  }
+
+                                                           #footer_icons {
+                                                             span {
+                                                               margin-left: 10px;
+                                                             }
+                                                           }
+                           .fa-facebook {
+                             .relative;
+                             left: -300px;
+                             opacity: 0;
+                             line-height: 54px;
+                             font-size: 44px;
+
+                             &:after {
+                               .roll_icons_after('\f09a', darken(@main-color, 20%));
+                               background-color: white !important;
+                               font-size: 44px;
+                             }
+
+                             &:hover&:after {
+                               opacity: 1 !important;
+                             }
+                           }
+
+                 .fa-github {
+                   .relative;
+                   left: 300px;
+                   opacity: 0;
+                   line-height: 54px;
+                   font-size: 44px;
+                   &:after {
+                     .roll_icons_after('\f09b', darken(@main-color, 20%));
+                     background-color: white !important;
+                     line-height: 44px;
+                     font-size: 47px !important;
+                   }
+                   &:hover&:after {
+                     opacity: 1 !important;
+                   }
+                 }
+
+                 .roll_facebook {
+                  left: 0 !important;
+                   .roll_icons_footer(720deg);
+                 }
+                 .roll_github {
+                   left: 0 !important;
+                   .roll_icons_footer(-720deg);
+                 }
+
 

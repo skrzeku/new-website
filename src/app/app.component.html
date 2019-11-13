@@ -1,1 +1,11 @@
-<app-content></app-content>
+<div id="big_container" [ngClass]="{'navi_shown' : leftnaviBoolean }">
+  <div id="left_navi">
+    <app-left-navi></app-left-navi>
+  </div>
+  <div id="right_content">
+    <app-content></app-content>
+  </div>
+</div>
+
+
+

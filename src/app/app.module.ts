@@ -6,6 +6,7 @@ import {MainModule} from "./main/main.module";
 import {CoreModuleModule} from "./core-module/core-module.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MaterialModule} from "./material/material.module";
+import {MainServiceService} from "./core-module/services/main-service.service";
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import {MaterialModule} from "./material/material.module";
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [MainServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

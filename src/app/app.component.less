@@ -1,0 +1,24 @@
+@import "../assets/styles/global";
+@left_navi_width: 30%;
+
+
+#big_container {
+  .relative;
+}
+
+#left_navi {
+  .fixed;
+  left: -@left_navi_width;
+  top: 0;
+  width: @left_navi_width;
+  height: 100vh;
+  z-index: 99;
+  background-color: whitesmoke;
+}
+#right_content {
+  .d-inline;
+  width: 100%;
+}
+.navi_shown {
+  left: 0;
+}
