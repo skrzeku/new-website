@@ -5,10 +5,46 @@
 <section id="first_section">
 
 
+
+
+
+
+
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 col-md-6 left_first">
-        <div class="homesection" >
+
+
+
+
+
+        <nav class="navbar navbar-dark navbar-expand-md justify-content-md-between justify-content-center">
+          <div class="navbar-brand">Paweł Skrzeszewski</div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse justify-content-end collapse" id="navbarSupportedContent">
+            <div class="nav-item nav-link">Lol</div>
+            <div class="nav-item nav-link">Lol</div>
+            <div class="nav-item nav-link">Lol</div>
+            <div class="nav-item nav-link">Lol</div>
+            <div class="nav-item nav-link">Lol</div>
+          </div>
+        </nav>
+
+
+        <!--
+        <div class="d-md-none small_navigation" [ngClass]="{'change_height': small_navi_bool}">
+          <ul id="small_navi_ul">
+            <li>O MNIE</li>
+            <li>Umiejętności</li>
+            <li>Portfolio</li>
+            <li>Kontakt</li>
+          </ul>
+        </div> -->
+       <!-- <div class="hide_navi" [ngClass]="{'show_navi': small_navi_bool}"></div> -->
+
+        <div class="homesection">
           <p>Witam</p>
            <p>nazywam się</p> <h1><b id="pawelbold">Paweł Skrzeszewski</b><br />
              front-end <span id="span_developer">d</span><span>eveloper</span> </h1>
@@ -32,7 +68,7 @@
                   <!-- 2nd section-->
         <section id="about_section" #about_section>
           <!-- navigation-->
-          <app-navigation #navigation></app-navigation>
+          <app-navigation #navigation (small_navi_out)="childnavi($event)"></app-navigation>
 
           <div class="container-fluid">
             <div class="row">
@@ -129,7 +165,7 @@
                   </div>
                 </form>
                 <div id="btn_wrapper">
-                  <button mat-raised-button class="header_btn" (click)="rollIcons()">Wyślij</button>
+                  <button mat-raised-button class="header_btn" (click)="SendMail()">Wyślij</button>
                 </div>
               </div>
 

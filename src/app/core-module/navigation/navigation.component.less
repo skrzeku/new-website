@@ -1,19 +1,34 @@
 
 @import "../../../assets/styles/global";
 .fixed_navi {
+
+  .d-none; ////
+
   position: absolute;
-  top: 0;
+  top: -100vh;
   left: 0;
-  background-color: dimgray;
-  height: 0;
+  background-color: white;
+  height: @navbar_height;
   z-index: 99;
  .basic_transition;
+
+  @media @small {
+    top: 0;
+    background-color: dimgray;
+    height: 0;
+  }
+
         .row {
           ul, .logo {
-            opacity: 0;
             .custom_transition(opacity 0.2s ease);
+            @media @small {
+              opacity: 0;
+            }
           }
         }
+}
+.navbar-toggler {
+  background-color: red;
 }
 .row {
 

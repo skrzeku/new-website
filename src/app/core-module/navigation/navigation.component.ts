@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MainServiceService} from "../services/main-service.service";
 
 @Component({
@@ -9,6 +9,8 @@ import {MainServiceService} from "../services/main-service.service";
 export class NavigationComponent implements OnInit {
   fixedboolean: boolean = false;
   left_navi_boolean: boolean;
+  navi_bool: boolean = false;
+  @Output() small_navi_out = new EventEmitter();
 
   constructor(private mainservice: MainServiceService) { }
 
@@ -18,8 +20,10 @@ export class NavigationComponent implements OnInit {
     const elements = document.querySelector(id) as Element;
     elements.scrollIntoView({ block: 'end',  behavior: 'smooth' });
   }
-  left_navi_show() {
-    this.mainservice.ShareLeftNavi(true);
+  show_small_navi() {
+    this.navi_bool = !this.navi_bool;
+    //this.mainservice.ShareLeftNavi(true);
+    this.small_navi_out.emit(this.navi_bool);
   }
 
 }

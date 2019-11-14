@@ -4,16 +4,19 @@
 
 .keyframes(rollimg, {
 0% {
-  //right: -300px;
+  right: -300px;
+  opacity: 0;
 .rotate(10deg);
 
 }
 60% {
-  //right: 90px;
+  right: 90px;
 .rotate(369deg);
+  opacity: 0.8;
 }
 100% {
-  //right: 0;
+  right: 0;
+  opacity: 1;
 }
 });
 
@@ -29,15 +32,51 @@
   background-color: gray;
 }
 
+#small_navi_ul {
+  .list-style-none;
+}
+.hide_navi {
+  height: 150px;
+  .absolute;
+  top: @navbar_height;
+  background-color: gray;
+  left: 0;
+  z-index: 9;
+  .w(100%);
+  .basic_transition;
+  @media @small {
+    .d-none;
+  }
+}
+.show_navi {
+  top: @navbar_height + 150px;
+  .basic_transition;
+  @media @small {
+    .d-none;
+  }
+}
 
-#about_section {
-  height: auto;
-  background-color: blue;
+.small_navigation {
   .relative;
+  top: @navbar_height;
+  left: 0;
+  height: 0;
+  display: none;
+  .w(100%);
+  margin-top: 20px;
+  .basic_transition;
+
 }
-.separator {
-  height: @navbar_height;
+
+.change_height {
+  display: block;
+  height: 120px;
+  .basic_transition;
 }
+
+
+
+
 .left_first {
   .center-text;
   height: 100vh;
@@ -56,6 +95,7 @@
 .homesection {
   position: relative;
   top: 50%;
+  z-index: 11;
   transform: translateY(-50%);
 }
 #first_btn_wrapper {
@@ -82,10 +122,15 @@
                             //About me section
       #about_section {
         height: auto;
+        background-color: blue;
+        .relative;
         @media @medium {
           height: 100vh;
         }
       }
+.separator {
+  height: @navbar_height;
+}
       #about_right {
         background-color: red;
       }
@@ -95,7 +140,7 @@
         border-radius: 50%;
         margin: 0 auto;
         right: -300px;
-        .rotate(10deg);
+        opacity: 0;
         background-image: url("../../../assets/images/brown-wooden-dock-over-body-of-water-1227520.jpg");
         background-size: cover;
         background-position: center center;

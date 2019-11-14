@@ -3,6 +3,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 import {Project} from "../../core-module/model/project.model";
 import {NavigationComponent} from "../../core-module/navigation/navigation.component";
 import * as $ from 'jquery';
+import {MatSnackBar} from "@angular/material";
 
 
 
@@ -43,6 +44,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
   portfolio_header_boolean: boolean = false;
   skill_header_boolean: boolean = false;
   about_header_boolean: boolean = false;
+  small_navi_bool: boolean = false;
 
 
 
@@ -113,7 +115,8 @@ export class ContentComponent implements OnInit, AfterViewInit{
     }];
 
 
-  constructor(private render: Renderer2) { }
+  constructor(private render: Renderer2,
+              private snack: MatSnackBar) { }
 
   ngOnInit() {
     this.ctx = this.canvas.nativeElement.getContext('2d');
@@ -125,6 +128,8 @@ export class ContentComponent implements OnInit, AfterViewInit{
     this.portfolio_position = this.portfolio.nativeElement.getBoundingClientRect().top;
     this.contact_position = this.contact.nativeElement.getBoundingClientRect().top;
     this.abilities_position = this.abilities.nativeElement.getBoundingClientRect().top;
+    console.log(this.childnavi);
+
     this.BallElement = {
       x1: 100,
       y: 100,
@@ -144,6 +149,11 @@ export class ContentComponent implements OnInit, AfterViewInit{
     const CurrenScrollPosition = window.pageYOffset;
     this.CheckBoolean();
     this.CheckSkills();
+    if (CurrenScrollPosition >= this.about_position - 250) {
+      this.RemoveClassActive();
+      this.AddClassActive(0);
+      this.about_header_boolean = true;
+    }
 
     if (CurrenScrollPosition >= this.abilities_position - 250) {
       this.RemoveClassActive();
@@ -159,17 +169,22 @@ export class ContentComponent implements OnInit, AfterViewInit{
       this.RemoveClassActive();
       this.AddClassActive(3);
       this.contact_header_boolean = true;
+      this.spansboolean = true;
     }
-
+  }
+          //navi should be absolute for the smallest devices
+  CheckWidth() {
+    if (window.innerWidth < 992) {
+      this.navigation.fixedboolean = false;
+    }
+    else this.navigation.fixedboolean = true;
   }
 
   CheckBoolean() {
     const ScrollPosition = window.pageYOffset;
     if (ScrollPosition >= this.about_position - 2) {
-      this.navigation.fixedboolean = true;
-      this.RemoveClassActive();
-      this.AddClassActive(0);
-      this.about_header_boolean = true;
+      this.CheckWidth();
+
     }
     if (ScrollPosition <= this.about_position - 2) {
       this.navigation.fixedboolean = false;
@@ -199,6 +214,9 @@ export class ContentComponent implements OnInit, AfterViewInit{
   ScrollToElement(id) {
     const elements = document.querySelector(id) as Element;
     elements.scrollIntoView({ block: 'end',  behavior: 'smooth' });
+  }
+  childnavi(event) {
+    this.small_navi_bool = event;
   }
 
   canvasAnimate() {
@@ -244,7 +262,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
   }
 
   rollIcons() {
-    this.spansboolean = true;
+
     this.contact_header_boolean = true;
   }
 
@@ -276,31 +294,35 @@ export class ContentComponent implements OnInit, AfterViewInit{
   }
 
 
+  onsucces(): void {
+    this.snack.open('Email wysłany poprawnie');
+  }
 
-  /*
   SendMail(): void {
     const data = {
       service_id: 'skrzekugmail',
       template_id: 'mytemplate',
       user_id: 'user_7IplmzdpkPdh019K7I4Ey',
       template_params: {
-        subject: this.emailform.controls['subject'].value,
-        text: this.emailform.controls['email'].value,
-        from_email: this.emailform.controls['Body'].value
+        subject: this.name,
+        text: this.content,
+        from_email: this.email
       }
     };
+
 
     $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
       type: 'POST',
       data: JSON.stringify(data),
       contentType: 'application/json'
-    }).done(function() {
-      console.log('Your mail is sent!');
-    }).fail(function(error) {
+    }).done(() => {
+      this.onsucces();
+
+    }).fail((error) => {
       alert('Oops... ' + JSON.stringify(error));
     });
   }
 
-  */
+
 
 }
