@@ -1,27 +1,8 @@
 <div class="container-fluid fixed_navi" [ngClass]="{'fixed_navbar': fixedboolean}">
   <div class="row">
     <div class="logo offset-1 col-8 offset-md-1 col-md-4 center-text">
-      logo
+      Skrzeszewski
     </div>
-    <div class="col-3">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-link">siema</li>
-          <li class="nav-link">siema</li>
-          <li class="nav-link">siema</li>
-          <li class="nav-link">siema</li>
-        </ul>
-      </div>
-    </div>
-    <div class="menu_bars col-3 d-md-none">
-      <a (click)="show_small_navi()"><i class="fas fa-bars "></i></a>
-    </div>
-
-
-
     <ul class="navi_list col-md-6 d-none d-md-inline-flex m-0">
       <li class="navigate active_navi" (click)="ScrollToElement('#about_section')">O mnie</li>
       <li class="navigate" (click)="ScrollToElement('#abilities_section')">Umiejętności</li>

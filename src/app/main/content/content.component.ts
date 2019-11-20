@@ -1,9 +1,10 @@
 import {AfterViewInit, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {animate, state, style, transition, trigger} from "@angular/animations";
+import {animate, keyframes, query, sequence, stagger, state, style, transition, trigger} from "@angular/animations";
 import {Project} from "../../core-module/model/project.model";
 import {NavigationComponent} from "../../core-module/navigation/navigation.component";
 import * as $ from 'jquery';
 import {MatSnackBar} from "@angular/material";
+import {Filter} from "../../core-module/pipes/filter.model";
 
 
 
@@ -20,8 +21,47 @@ import {MatSnackBar} from "@angular/material";
         width: '*'
       })),
       transition('hide <=> show', animate('1100ms ease-in')),
+    ]),
+
+    trigger('hide_projects', [
+      transition('* => void', [
+        style({ opacity: '1', transform: 'scale3d(1, 1, 1)'}),
+          animate("0.5s ease-out", style({  opacity: 0, transform: 'scale3d(0.2, 0.2, 0.2)'  }))
+
+      ]),
+        /*
+        transition('void => *', [
+          style({ opacity: '0', transform: 'scale3d(0.2, 0.2, 0.2)' }),
+            animate("0.7s ease-in", style({  opacity: 1, transform: 'scale3d(1, 1, 1)' }))
+          ])
+          */
+        ]),
+
+/*
+  trigger('stagger_animation', [
+    transition('* <=> *', [
+      query(
+        ':enter',
+        [
+          style({ opacity: 0, transform: 'translateY(-15px)' }),
+          stagger(
+            '50ms',
+            animate(
+              '1000ms ease-out',
+              style({ opacity: 1, transform: 'translateY(0px)' })
+            )
+          )
+        ],
+        { optional: true }
+      ),
+      query(':leave', animate('50ms', style({ opacity: 0 })), {
+        optional: true
+      })
     ])
-  ]
+
+    ])
+  */]
+
 })
 export class ContentComponent implements OnInit, AfterViewInit{
   @ViewChild('col12heared') col12heared: ElementRef;
@@ -31,6 +71,8 @@ export class ContentComponent implements OnInit, AfterViewInit{
   @ViewChild('contact') contact: ElementRef;
   @ViewChild('abilities') abilities: ElementRef;
   @ViewChild('canvas') canvas: ElementRef<HTMLCanvasElement>;
+  @ViewChild('collapse') collapse: ElementRef;
+  @ViewChild('first_filter') first_filter: ElementRef;
   about_position: number;
   portfolio_position: number;
   contact_position: number;
@@ -45,6 +87,11 @@ export class ContentComponent implements OnInit, AfterViewInit{
   skill_header_boolean: boolean = false;
   about_header_boolean: boolean = false;
   small_navi_bool: boolean = false;
+  project_hover_bool: boolean = false;
+  project_show_bool: boolean = false;
+
+
+
 
 
 
@@ -56,8 +103,8 @@ export class ContentComponent implements OnInit, AfterViewInit{
   projects: Project[] = [ {
     id: 1,
     img_url: '../../../assets/images/furni.png',
-    language: 'HTML',
-    name: 'First WebSite',
+    language: 'JavaScript',
+    name: 'Furniture_App',
     description: 'Aplikacja meblowa jak ją nazwałem, była moją pierwszą aplikacją wykonaną przy wykorzystaniu języka JavaScript oraz biblioteki JQuery.' +
     'Aplikacja ta służyłą prostej wizualizacji elementów meblowych i skomponowanie mini kuchni.',
     tools: 'HTML5, CSS3, JavaScript, JQuery, Bootstrap',
@@ -66,7 +113,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
     {
       id: 2,
       img_url: '../../../assets/images/site.png',
-      language: 'HTML',
+      language: 'JavaScript',
       name: 'First WebSite',
       description: 'Moja pierwsza strona internetowa, która była kolejnym etapem poznawania technologii front-endowych.',
       tools: 'HTML5, CSS3, JavaScript, JQuery, Bootstrap',
@@ -106,13 +153,15 @@ export class ContentComponent implements OnInit, AfterViewInit{
     {
       id: 7,
       img_url: '../../../assets/images/domekon2.png',
-      language: 'Java',
+      language: 'Wordpress',
       name: 'domekon.pl',
       description: 'Ten projekt nie jest mojego autorstwa, jeden z klientów zgłosił się do mnie w celu wprowadzenia poprawek stylistycznych, klilku funkcjonalności przy użyciu JS oraz poprawienie aplikacji względem SEO. ' +
       'Dla mnie było to cenne doświadczenie w pracy z nową technologią jaką jest Wordpress.',
       tools: 'Wordpress, CSS, HTML5, PHP',
       gitUrl: 'http://domekon.pl'
     }];
+        //To flter of projects at the begin of component projects.length should be equal to 0
+  filters: Filter[] = [];
 
 
   constructor(private render: Renderer2,
@@ -120,6 +169,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
 
   ngOnInit() {
     this.ctx = this.canvas.nativeElement.getContext('2d');
+
     //this.anotherAnimate();
 
   }
@@ -129,6 +179,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
     this.contact_position = this.contact.nativeElement.getBoundingClientRect().top;
     this.abilities_position = this.abilities.nativeElement.getBoundingClientRect().top;
     console.log(this.childnavi);
+    this.SetDefaultPosition();
 
     this.BallElement = {
       x1: 100,
@@ -164,6 +215,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
       this.RemoveClassActive();
       this.AddClassActive(2);
       this.portfolio_header_boolean = true;
+
     }
     if (CurrenScrollPosition >= this.contact_position - 250) {
       this.RemoveClassActive();
@@ -183,7 +235,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
   CheckBoolean() {
     const ScrollPosition = window.pageYOffset;
     if (ScrollPosition >= this.about_position - 2) {
-      this.CheckWidth();
+      this.navigation.fixedboolean = true;
 
     }
     if (ScrollPosition <= this.about_position - 2) {
@@ -198,7 +250,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
       this.state = 'show';
     }
     if (scrollposition <= elementPosition - 300 || scrollposition >= this.portfolio_position) {
-      this.state = 'hide';
+      return;
     }
   }
   private AddClassActive (numb: number): void {
@@ -212,8 +264,11 @@ export class ContentComponent implements OnInit, AfterViewInit{
     }
   }
   ScrollToElement(id) {
+    const collapse_element = this.collapse.nativeElement;
     const elements = document.querySelector(id) as Element;
     elements.scrollIntoView({ block: 'end',  behavior: 'smooth' });
+    this.render.removeClass(collapse_element, 'show');
+
   }
   childnavi(event) {
     this.small_navi_bool = event;
@@ -264,6 +319,44 @@ export class ContentComponent implements OnInit, AfterViewInit{
   rollIcons() {
 
     this.contact_header_boolean = true;
+  }
+  SetDefaultPosition() {
+    const div_flow = document.querySelector('.active_filter');
+    const pos = this.first_filter.nativeElement.offsetLeft;
+    const wid = this.first_filter.nativeElement.width;
+    this.render.setStyle(div_flow, 'left', pos + 'px');
+    this.render.setStyle(div_flow, 'width', wid + 'px');
+
+  }
+  changefilter (event) {
+
+        //to move colored div
+    const el = event.target;
+    const div_flow = document.querySelector('.active_filter');
+    const off_left = el.offsetLeft;
+    const target_width = el.clientWidth;
+    const top = el.offsetTop;
+    this.render.setStyle(div_flow, 'left', off_left + 'px');
+    this.render.setStyle(div_flow, 'width', target_width + 'px');
+    this.render.setStyle(div_flow, 'left', off_left + 'px');
+    this.render.setStyle(div_flow, 'top', top + 'px');
+
+      //to fill an array
+   const attr = el.getAttribute('data-target');
+   if (attr === 'all') {
+     this.filters.length = 0;
+   }
+   else {
+     this.filters.length = 0;
+     this.filters.push({
+       name: 'language',
+       value: attr
+     });
+   }
+
+
+
+
   }
 
   drawball () {

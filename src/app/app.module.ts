@@ -7,6 +7,7 @@ import {CoreModuleModule} from "./core-module/core-module.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MaterialModule} from "./material/material.module";
 import {MainServiceService} from "./core-module/services/main-service.service";
+import {FilterPipe} from "./core-module/pipes/filter.pipe";
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import {MainServiceService} from "./core-module/services/main-service.service";
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [MainServiceService],
+  providers: [MainServiceService, FilterPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

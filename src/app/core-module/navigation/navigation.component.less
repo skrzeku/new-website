@@ -2,10 +2,10 @@
 @import "../../../assets/styles/global";
 .fixed_navi {
 
-  .d-none; ////
 
   position: absolute;
-  top: -100vh;
+  display: none;
+  top: 0;
   left: 0;
   background-color: white;
   height: @navbar_height;
@@ -13,6 +13,7 @@
  .basic_transition;
 
   @media @small {
+    display: block;
     top: 0;
     background-color: dimgray;
     height: 0;
@@ -44,6 +45,9 @@
   //height: @navbar_height;
   width: auto;
   line-height: @navbar_height;
+  font-family: 'Permanent Marker', cursive;
+  font-weight: 900;
+  font-size: 130%;
 }
 .navigate {
   width: 25%;

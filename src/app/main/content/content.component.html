@@ -18,31 +18,20 @@
 
 
 
-        <nav class="navbar navbar-dark navbar-expand-md justify-content-md-between justify-content-center">
+        <nav class="navbar navbar-dark navbar-expand-lg justify-content-lg-between justify-content-center small_navbar">
           <div class="navbar-brand">Paweł Skrzeszewski</div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="navbar-collapse justify-content-end collapse" id="navbarSupportedContent">
-            <div class="nav-item nav-link">Lol</div>
-            <div class="nav-item nav-link">Lol</div>
-            <div class="nav-item nav-link">Lol</div>
-            <div class="nav-item nav-link">Lol</div>
-            <div class="nav-item nav-link">Lol</div>
+          <div class="navbar-collapse justify-content-end collapse" id="navbarSupportedContent" #collapse>
+            <div class="nav-item nav-link" (click)="ScrollToElement('#about_section')">O mnie</div>
+            <div class="nav-item nav-link" (click)="ScrollToElement('#abilities_section')">Umiejętności</div>
+            <div class="nav-item nav-link" (click)="ScrollToElement('#portfolio_section')">Portfolio</div>
+            <div class="nav-item nav-link" (click)="ScrollToElement('#contact_section')">Kontakt</div>
           </div>
         </nav>
 
 
-        <!--
-        <div class="d-md-none small_navigation" [ngClass]="{'change_height': small_navi_bool}">
-          <ul id="small_navi_ul">
-            <li>O MNIE</li>
-            <li>Umiejętności</li>
-            <li>Portfolio</li>
-            <li>Kontakt</li>
-          </ul>
-        </div> -->
-       <!-- <div class="hide_navi" [ngClass]="{'show_navi': small_navi_bool}"></div> -->
 
         <div class="homesection">
           <p>Witam</p>
@@ -89,13 +78,24 @@
           </div>
         </section>
 
-                        <!-- 3nd section-->
+                        <!-- Skills section-->
                         <section id="abilities_section" #abilities>
                           <div class="container-fluid">
                             <div class="row">
                               <div class="col-12" #col12heared>
+                                <button class="learn-more">
+                                  <span class="circle">
+                                    <span class="icon arrow"></span>
+                                  </span>
+                                  <span class="button-text">Learn More</span>
+                                </button>
                                 <h2 class="hearder_section" [ngClass]="{'header_show': skill_header_boolean}">Umiejętności</h2>
                               </div>
+
+
+
+
+
                               <div class="col-12 offset-md-1 col-md-10 abilities_rows">
                                 <ul id="abilisties_ul" class="m-0 p-0" >
 
@@ -117,6 +117,7 @@
                           </div>
                         </section>
 
+
         <!-- Portfolio section-->
           <section id="portfolio_section" #portfolio>
             <div class="container-fluid">
@@ -124,9 +125,18 @@
                 <div class="col-12">
                   <h2 class="hearder_section" [ngClass]="{'header_show': portfolio_header_boolean}">Portfolio</h2>
                 </div>
-                <div class="col-12 offset-md-1 col-md-10 p-0">
-                  <div class="one_project" *ngFor="let project of projects">
-                    {{project.name}}
+                <div class="filters">
+                  <div class="active_filter"></div>
+
+                  <div class="one_filter" (click)="changefilter($event)" data-target="all" #first_filter>Wszystkie</div>
+                  <div class="one_filter" (click)="changefilter($event)" data-target="JavaScript">JavaScript</div>
+                  <div class="one_filter" (click)="changefilter($event)" data-target="Wordpress">Wordpress</div>
+                  <div class="one_filter" (click)="changefilter($event)" data-target="Angular">Angular</div>      <!-- [@listStagger]='projects.length-->
+                </div>
+                <div class="col-12 offset-md-1 col-md-10 p-0 projects_wrapper" >                     <!-- [ngClass]="{'shown_projects' : portfolio_header_boolean}"-->
+                  <div class="one_project" *ngFor="let project of projects | filter: filters" [ngClass]="{'shown_projects' : portfolio_header_boolean}" [@hide_projects] = "project.state">
+                   <span id="project_span">{{project.name}}</span>
+                    <button mat-raised-button class="header_btn" id="project_btn">Szczegóły</button>
                   </div>
                 </div>
 
@@ -151,9 +161,8 @@
               </div>
 
                     <!-- Right Side-->
-              <div class="col-12 col-md-5" id="contact_wrapper">
-                <form class="myform">
-
+              <div class="col-12 col-md-5" id="contact_wrapper" [ngClass]="{'right_contact_shown': contact_header_boolean}">
+                <form class="myform" >
                   <div class="form-group">
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Imię i nazwisko" [ngModel]="name" name="name">
                   </div>
