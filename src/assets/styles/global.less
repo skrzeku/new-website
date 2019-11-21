@@ -128,14 +128,26 @@
 .roll_icons_after (@content_icon; @color) {
   .absolute;
   content: @content_icon;
-  height: 44px;
   .w(44px);
   color: @color;
   font-size: 34px;
   opacity: 0;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
   line-height: 44px;
   border-radius: 50%;
-  bottom: 5px;
-  left: 0;
   background-color: darken(@main-color, 20%);
+}
+.aftersection (@color){
+  .w(0);
+  height: 0;
+  .absolute;
+  content: "";
+  bottom: -100px;
+  left: 50%;
+  border-style: solid;
+  border-width: 50px 200px 50px;
+  border-color: transparent transparent @color transparent;
+  transform: rotate(180deg) translateX(50%);
 }

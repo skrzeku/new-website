@@ -19,6 +19,17 @@
   opacity: 1;
 }
 });
+.keyframes (scrollup, {
+        0% {
+          top: 0;
+        }
+      50% {
+        top: 10px;
+      }
+        100% {
+          top: 0;
+        }
+      });
 
 .keyframes(slide, {
 0% {
@@ -172,20 +183,20 @@
                             //About me section
       #about_section {
         height: auto;
-        background-color: blue;
+        background-color: rgb(41, 42, 46);
         .relative;
-        @media @small {
-          height: 100vh;
+        &:after {
+          .aftersection(rgb(41, 42, 46));
+
         }
       }
 .separator {
   height: @navbar_height;
 }     #about_left {
   padding: 40px 15px;
-
+  color: whitesmoke;
       }
       #about_right {
-        background-color: red;
         padding: 40px 10px;
       }
       .rounded-img {
@@ -217,16 +228,21 @@
                     //Abilities section
           #abilities_section {
             padding-bottom: 40px;
+            .relative;
+            &:after {
+              .aftersection(white);
+            }
+
             @media @medium {
               padding-bottom: 100px;
             }
+
           }
 
 
       #abilisties_ul {
       .list-style-none;
         padding: 20px;
-
         .w(100%);
               li {
                 background-color: lightgray;
@@ -240,10 +256,7 @@
                 .d-inline;
                 border-radius: 5px;
                 clear: both;
-                @media @medium {
-                  width: calc(50% - 10px);
-                  margin-left: 10px;
-                }
+
                         div {
                           background-color: lighten(darkred, 10%);
                           color: white;
@@ -300,7 +313,7 @@
 
       //Portfolio Section
               #portfolio_section {
-                background-color: gray;
+                background-color: rgb(41, 42, 46);
                 z-index: 1;
                 padding-bottom: 40px;
                 padding-right: 10px;
@@ -322,6 +335,8 @@
   padding: 5px 30px;
   .custom_transition(all 0.7s ease);
   z-index: 99 !important;
+  color: whitesmoke;
+  text-transform: uppercase;
 }
 .active_filter {
   background-color: @main-color;
@@ -444,7 +459,7 @@
                 color: whitesmoke;
                 .center-text;
                 .w(100%);
-                background-color: @main-color;
+                background-color: rgb(41, 42, 46);
               }
 
 
@@ -599,10 +614,13 @@
                                                                transform: translateY(-100%);
                                                                border-style: solid;
                                                                border-width: 100px 0 100px 100px ;
-                                                               border-color: transparent transparent @main-color transparent;
+                                                               border-color: transparent transparent rgb(41, 42, 46) transparent;
                                                              }
-                                                             span {
+                                                             a {
                                                                margin-left: 10px;
+                                                               .c-pointer;
+                                                               outline: 0;
+                                                               color: white;
                                                              }
                                                            }
                            .fa-facebook {
@@ -615,7 +633,7 @@
                              &:after {
                                .roll_icons_after('\f09a', darken(@main-color, 20%));
                                background-color: white !important;
-                               font-size: 44px;
+                               font-size: 46px;
                              }
 
                              &:hover&:after {
@@ -648,88 +666,29 @@
                    left: 0 !important;
                    .roll_icons_footer(-720deg);
                  }
+                 .scrollbtn {
+                   padding: 15px;
+                   background-color: white;
+                   .absolute;
+                   top: 0;
+                   left: 20%;
+                   .c-pointer;
+                   &:hover i {
+                     animation-play-state: paused;
+                     -webkit-animation-play-state: paused;
+                     -moz-animation-play-state: paused;
+                     -o-animation-play-state: paused;
+
+                   }
+                   i {
+                     color: @main-color;
+                     font-size: 22px;
+                     .relative;
+                     .animation(scrollup 1.4s infinite);
+                   }
+
+                 }
 
 
 
 
-                 //just for test
-    button.learn-more {
-      position: relative;
-      display: inline-block;
-      cursor: pointer;
-      outline: none;
-      border: 0;
-      vertical-align: middle;
-      text-decoration: none;
-      background: transparent;
-      padding: 0;
-      font-size: inherit;
-      font-family: inherit;
-      width: 12rem;
-      height: auto;
-      &:hover {
-        .circle {
-          width: 100%;
-          .icon {
-            &.arrow {
-              background: white;
-              transform: translate(1rem, 0);
-            }
-          }
-        }
-        .button-text {
-          color: white;
-        }
-      }
-        .circle {
-          position: relative;
-          display: block;
-          margin: 0;
-          width: 3rem;
-          height: 3rem;
-          background-color: black;
-          border-radius: 1.625rem;
-          .custom_transition(all 0.5s cubic-bezier(0.65,0,.076,1));
-          .icon {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            margin: auto;
-            background: white;
-            .custom_transition(all 0.5s cubic-bezier(0.65,0,.076,1));
-            &.arrow {
-              .custom_transition(all 0.5s cubic-bezier(0.65,0,.076,1));
-              left: 0.625rem;
-              width: 1.125rem;
-              height: 0.125rem;
-              background: none;
-                  &::before {
-                    position: absolute;
-                    content: '';
-                    top: -0.25rem;
-                    right: 0.0625rem;
-                    width: 0.625rem;
-                    height: 0.625rem;
-                    border-top: 0.125rem solid #fff;
-                    border-right: 0.125rem solid #fff;
-                    transform: rotate(45deg);
-                  }
-            }
-          }
-        }
-    }
-    .button-text {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 0.75rem 0;
-      margin: 0 0 0 1.85rem;
-      color: black;
-      font-weight: 700;
-      line-height: 1.6;
-      text-align: center;
-      text-transform: uppercase;
-      .custom_transition(all 0.5s cubic-bezier(0.65,0,.076,1));
-    }

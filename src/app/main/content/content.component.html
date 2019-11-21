@@ -83,36 +83,34 @@
                           <div class="container-fluid">
                             <div class="row">
                               <div class="col-12" #col12heared>
-                                <button class="learn-more">
-                                  <span class="circle">
-                                    <span class="icon arrow"></span>
-                                  </span>
-                                  <span class="button-text">Learn More</span>
-                                </button>
                                 <h2 class="hearder_section" [ngClass]="{'header_show': skill_header_boolean}">Umiejętności</h2>
                               </div>
+                              <div class="col-12 offset-md-1 col-md-10">
+                                <div class="row">
 
 
-
-
-
-                              <div class="col-12 offset-md-1 col-md-10 abilities_rows">
-                                <ul id="abilisties_ul" class="m-0 p-0" >
-
+                                <div class="col-12 col-md-6 left_skills">
+                                  Opis Co się nauczyłem plus ikony na dole
+                                </div>
+                                <div class="col-12 col-md-6 abilities_rows">
+                                  <ul id="abilisties_ul" class="m-0 p-0" >
                                     <!--<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 80%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><span>HTML5</span></div> -->
-
-                                  <li class="progress-bar-striped"><div class="eighty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>HTML5</span></div><span>80%</span></li>
-                                  <li class="progress-bar-striped"><div class="eighty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>CSS/LESS/SCSS</span></div><span>80%</span></li>
-                                  <li class="progress-bar-striped"><div class="eighty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>Angular 4+</span></div><span>80%</span></li>
-                                  <li class="progress-bar-striped"><div  class="eighty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>JavaScript, TypeScript</span></div><span>80%</span></li>
-                                  <li class="progress-bar-striped"><div class="sixty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>Bootstrap</span></div><span>60%</span></li>
-                                  <li class="progress-bar-striped"><div class="fourty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>TDD, Jasmine, Karma</span></div><span>40%</span></li>
-                                  <li class="progress-bar-striped"><div class="sixty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>RWD</span></div><span>60%</span></li>
-                                  <li class="progress-bar-striped"><div  class="fifty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>SEO</span></div><span>50%</span></li>
-                                  <li class="progress-bar-striped"><div  class="fourty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>Git, Webpack</span></div><span>40%</span></li>
-                                  <li class="progress-bar-striped"><div  class="sixty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>NPM</span></div><span>60%</span></li>
-                                </ul>
+                                    <li class="progress-bar-striped"><div class="eighty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>HTML5</span></div><span>80%</span></li>
+                                    <li class="progress-bar-striped"><div class="eighty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>CSS/LESS/SCSS</span></div><span>80%</span></li>
+                                    <li class="progress-bar-striped"><div class="eighty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>Angular 4+</span></div><span>80%</span></li>
+                                    <li class="progress-bar-striped"><div  class="eighty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>JavaScript, TypeScript</span></div><span>80%</span></li>
+                                    <li class="progress-bar-striped"><div class="sixty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>Bootstrap</span></div><span>60%</span></li>
+                                    <li class="progress-bar-striped"><div class="fourty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>TDD, Jasmine, Karma</span></div><span>40%</span></li>
+                                    <li class="progress-bar-striped"><div class="sixty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>RWD</span></div><span>60%</span></li>
+                                    <li class="progress-bar-striped"><div  class="fifty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>SEO</span></div><span>50%</span></li>
+                                    <li class="progress-bar-striped"><div  class="fourty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>Git, Webpack</span></div><span>40%</span></li>
+                                    <li class="progress-bar-striped"><div  class="sixty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>NPM</span></div><span>60%</span></li>
+                                  </ul>
+                                </div>
+                                </div>
                               </div>
+
+
                             </div>
                           </div>
                         </section>
@@ -154,8 +152,8 @@
                 <h2 class="hearder_section" id="contact_header" [ngClass]="{'header_show': contact_header_boolean}">Kontakt</h2>
                 <div class="left_contact_wrapper">
                   <div><span>E-mail:</span> <a href="mailto:pawelskrzeszewski92@gmail.com"> pawelskrzeszewski92@gmail.com</a></div>
-                  <div><span>Github:</span> <a href="https://github.com/skrzeku"> https://github.com/skrzeku</a></div>
-                  <div><span>LinkedIn:</span> <a href="https://www.linkedin.com/in/paweł-skrzeszewski-847a3413a/"> /in/paweł-skrzeszewski-847a3413a/</a></div>
+                  <div><span>Github:</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/skrzeku"> https://github.com/skrzeku</a></div>
+                  <div><span>LinkedIn:</span> <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/paweł-skrzeszewski-847a3413a/"> /in/paweł-skrzeszewski-847a3413a/</a></div>
                   <div><span>Telefon:</span> +48 512070640</div>
                 </div>
               </div>
@@ -180,17 +178,19 @@
 
               <div class="col-12 footer">
                 <div id="footer_icons">
-                  <span id="facebook_span">
+                  <a id="facebook_span" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/pawelskrzeszewski92">
                     <i class="fab fa-facebook" [ngClass]="{'roll_facebook': spansboolean}"></i>
-                  </span>
-                  <span id="linked_span">
+                  </a>
+                  <a id="linked_span" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/paweł-skrzeszewski-847a3413a/">
                     <i class="fab fa-linkedin-in"></i>
-                  </span>
-                  <span>
+                  </a>
+                  <a target="_blank" rel="noopener noreferrer" href="https://github.com/skrzeku">
                     <i class="fab fa-github" [ngClass]="{'roll_github': spansboolean}"></i>
-                  </span>
+                  </a>
 
+                  <a class="scrollbtn" (click)="ScrollToElement('#first_section')"><i class="fas fa-angle-double-up"></i></a>
                 </div>
+                <p>Copyright © 2019 Website - Paweł Skrzeszewski all rights reserved</p>
               </div>
             </div>
           </div>
