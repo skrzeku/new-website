@@ -5,6 +5,7 @@ import {NavigationComponent} from "../../core-module/navigation/navigation.compo
 import * as $ from 'jquery';
 import {MatSnackBar} from "@angular/material";
 import {Filter} from "../../core-module/pipes/filter.model";
+import {forEach} from "@angular/router/src/utils/collection";
 
 
 
@@ -20,7 +21,7 @@ import {Filter} from "../../core-module/pipes/filter.model";
       state('show', style({
         width: '*'
       })),
-      transition('hide <=> show', animate('1100ms ease-in')),
+      transition('hide => show', animate('1100ms linear')),
     ]),
 
     trigger('hide_projects', [
@@ -89,6 +90,8 @@ export class ContentComponent implements OnInit, AfterViewInit{
   small_navi_bool: boolean = false;
   project_hover_bool: boolean = false;
   project_show_bool: boolean = false;
+  mylo: number;
+  newinterval;
 
 
 
@@ -170,6 +173,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
   ngOnInit() {
     this.ctx = this.canvas.nativeElement.getContext('2d');
 
+
     //this.anotherAnimate();
 
   }
@@ -181,6 +185,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
     console.log(this.childnavi);
     this.SetDefaultPosition();
 
+
     this.BallElement = {
       x1: 100,
       y: 100,
@@ -188,9 +193,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
       vy: 2,
       radius: 25,
       color: 'blue',
-      draw: ()=> function () {
 
-      }
     };
   }
 
@@ -210,6 +213,10 @@ export class ContentComponent implements OnInit, AfterViewInit{
       this.RemoveClassActive();
       this.AddClassActive(1);
       this.skill_header_boolean = true;
+      this.state = 'show';
+      this.getpercentWidth();
+
+
     }
     if (CurrenScrollPosition >= this.portfolio_position - 250) {
       this.RemoveClassActive();
@@ -247,7 +254,8 @@ export class ContentComponent implements OnInit, AfterViewInit{
     const elementPosition = this.col12heared.nativeElement.offsetTop;
 
     if (scrollposition >= elementPosition - 300) {
-      this.state = 'show';
+
+
     }
     if (scrollposition <= elementPosition - 300 || scrollposition >= this.portfolio_position) {
       return;
@@ -390,6 +398,33 @@ export class ContentComponent implements OnInit, AfterViewInit{
   onsucces(): void {
     this.snack.open('Email wysłany poprawnie');
   }
+  getpercentWidth(): void {
+
+    const back_el = document.querySelectorAll('li.progress-bar-striped');
+    const all_spans = document.querySelectorAll('.percent_span');
+    const el = document.querySelectorAll('li.progress-bar-striped div');
+
+
+    const arrays = Array.from(el);
+
+    let i = 0;
+    let z = 0;
+      let inter = setInterval(()=> {
+        if (z >= 110) {
+        clearInterval(inter);
+        }
+        z++;
+        arrays.forEach((span, index)=> {
+          all_spans[index].innerHTML = Math.round((span.clientWidth / back_el[index].clientWidth) * 100).toString() + ' %';
+        });
+
+      }, 10);
+
+
+
+
+  }
+
 
   SendMail(): void {
     const data = {

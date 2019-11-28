@@ -1,5 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MainServiceService} from "../services/main-service.service";
+import { smoothscroll } from 'smoothscroll-polyfill';
+
 
 @Component({
   selector: 'app-navigation',
