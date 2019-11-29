@@ -5,6 +5,7 @@ import {CoreModuleModule} from "../core-module/core-module.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MaterialModule} from "../material/material.module";
+import { ProjectDetailsComponent } from './project-details/project-details.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {MaterialModule} from "../material/material.module";
     ReactiveFormsModule,
     MaterialModule
   ],
-  declarations: [ ContentComponent],
-  exports: [ContentComponent]
+  declarations: [ ContentComponent, ProjectDetailsComponent],
+  exports: [ContentComponent],
+  entryComponents: [ProjectDetailsComponent]
 })
 export class MainModule { }

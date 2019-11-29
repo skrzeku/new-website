@@ -151,3 +151,33 @@
   border-color: transparent transparent @color transparent;
   transform: rotate(180deg) translateX(50%);
 }
+.header_btn {
+  position: relative;
+  outline: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 2px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    background-color: @main-color;
+  }
+  &:hover&:after {
+    width: 100%;
+  }
+  &:hover {
+    color: white;
+  }
+}
+                //to hide focus effect
+
+        .mat-button-focus-overlay {
+          opacity: 0 !important;
+        }

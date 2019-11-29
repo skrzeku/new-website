@@ -375,12 +375,11 @@
               .one_project {
                 .relative;
                 border: 1px solid whitesmoke;
-                .w-calc(50%, 17px);
-                margin-left: 15px;
-                margin-top: 15px;
+                .w-calc(100%, 20px);
                 height: 300px;
                 opacity: 0;
                 z-index: 1;
+                margin: 15px 10px 0;
                 .d-inline;
                 &:after {
                   .absolute;
@@ -393,20 +392,25 @@
                   .custom_transition(all 0.2s ease-in);
                   z-index: -1;
                 }
+                &:hover #project_btn {
+                  opacity: 1;
+                  left: 50%;
+                }
+                &:hover #project_span {
+                  opacity: 1;
+                  left: 50%;
+                }
+                &:hover&:after {
+                  height: 100%;
+                }
+                @media @small {
+                  .w-calc(50%, 17px);
+                  margin-left: 15px;
+                  margin-right: 0;
+                }
                 @media @medium {
                   .w-calc(33.333%, 17px);
                   height: 400px;
-                  &:hover #project_btn {
-                    opacity: 1;
-                    left: 50%;
-                  }
-                  &:hover #project_span {
-                    opacity: 1;
-                    left: 50%;
-                  }
-                  &:hover&:after {
-                    height: 100%;
-                  }
                 }
 
               }
@@ -421,10 +425,16 @@
              #project_span {
                .absolute;
                left: 80%;
+               color: white;
                opacity: 0;
                transform: translateX(-50%);
                top: 30px;
                .custom_transition(all 0.4s ease);
+               &:first-letter {
+                 color: @main-color;
+                 font-weight: 900;
+                 font-size: 120%;
+               }
 
              }
              .shown_projects {
@@ -575,28 +585,7 @@
                     background-color: @main-color !important;
                   }
 
-                  .header_btn {
-                    position: relative;
-                    &:after {
-                      content: '';
-                      position: absolute;
-                      z-index: -1;
-                      width: 1%;
-                      height: 100%;
-                      left: 0;
-                      top: 0;
-                      -webkit-transition: all 0.3s;
-                      -moz-transition: all 0.3s;
-                      transition: all 0.3s;
-                      background-color: @main-color;
-                    }
-                    &:hover&:after {
-                      width: 100%;
-                    }
-                    &:hover {
-                      color: white;
-                    }
-                  }
+
                   #linked_span {
                     background-color: whitesmoke;
                     display: inline-block;

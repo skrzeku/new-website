@@ -135,10 +135,10 @@
                   <div class="one_filter" (click)="changefilter($event)" data-target="Wordpress">Wordpress</div>
                   <div class="one_filter" (click)="changefilter($event)" data-target="Angular">Angular</div>      <!-- [@listStagger]='projects.length-->
                 </div>
-                <div class="col-12 offset-md-1 col-md-10 p-0 projects_wrapper" >                     <!-- [ngClass]="{'shown_projects' : portfolio_header_boolean}"-->
-                  <div class="one_project" *ngFor="let project of projects | filter: filters" [ngClass]="{'shown_projects' : portfolio_header_boolean}" [@hide_projects] = "project.state">
+                <div class="col-12 offset-md-1 col-md-10 p-0 projects_wrapper" >
+                  <div class="one_project" *ngFor="let project of projects | filter: filters" [ngClass]="{'shown_projects' : portfolio_header_boolean}" [@hide_projects] = "project.state" [ngStyle]="{'background-image':' url(' + project.img_url + ')'}">
                    <span id="project_span">{{project.name}}</span>
-                    <button mat-raised-button class="header_btn" id="project_btn">Szczegóły</button>
+                    <button mat-raised-button class="header_btn" id="project_btn" (click)="openProjectDetails(project, $event)">Szczegóły</button>
                   </div>
                 </div>
 

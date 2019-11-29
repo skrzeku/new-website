@@ -3,9 +3,11 @@ import {animate, keyframes, query, sequence, stagger, state, style, transition, 
 import {Project} from "../../core-module/model/project.model";
 import {NavigationComponent} from "../../core-module/navigation/navigation.component";
 import * as $ from 'jquery';
-import {MatSnackBar} from "@angular/material";
+import {MatDialog, MatSnackBar} from "@angular/material";
 import {Filter} from "../../core-module/pipes/filter.model";
-import {forEach} from "@angular/router/src/utils/collection";
+import {ProjectDetails} from "@angular/cli/utilities/project";
+import {ProjectDetailsComponent} from "../project-details/project-details.component";
+
 
 
 
@@ -168,7 +170,8 @@ export class ContentComponent implements OnInit, AfterViewInit{
 
 
   constructor(private render: Renderer2,
-              private snack: MatSnackBar) { }
+              private snack: MatSnackBar,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
     this.ctx = this.canvas.nativeElement.getContext('2d');
@@ -362,8 +365,10 @@ export class ContentComponent implements OnInit, AfterViewInit{
      });
    }
 
-
-
+  }
+  openProjectDetails(project, e) {
+    e.preventDefault();
+    this.dialog.open(ProjectDetailsComponent, {data: project});
 
   }
 
