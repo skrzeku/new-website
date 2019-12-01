@@ -140,7 +140,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
       language: 'Angular',
       name: 'Current WebSite',
       description: 'Moja obecna strona internetowa. Jest to aplkiacja typu SPA. Była to moja druga aplikacja w której wykorzystałem nowoczesny framework Javascript - Angular.',
-      tools: 'TypeScript, Angular v6, HTML5, SCSS, Bootstrap, Node.js',
+      tools: 'TypeScript, Angular v6, HTML5, Sass, Bootstrap, Node.js',
       gitUrl: 'https://github.com/skrzeku/portfolio'
     },
     {
@@ -152,7 +152,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
       'Stylując tą aplikację wzorowałem się na aplikacji otomoto.pl. Nad tą aplikacją stale pracuje. W finalnej wersji znajdować się bedzie pełny system logowania, ' +
       'zaawansowany routing z nałożonymi Guardami. Możliwość dodawania, edytowania, usuwania pojazdów, oraz automatyczne usuwanie pojazdów po upływie określonego czasu. ' +
       'Obecna opublikowana wersja: https://skrzeku.github.io',
-      tools: 'TypeScript, Angular v6, HTML5, Less, Node.js, Google Firebase, Angular Material',
+      tools: 'TypeScript, Angular v6, HTML5, LESS, Node.js, Google Firebase, Angular Material, Bootstrap, ',
       gitUrl: 'https://github.com/skrzeku/Auto-Center'
     },
     {
