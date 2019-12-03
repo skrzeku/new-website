@@ -4,6 +4,7 @@
 .details_bigOne {
   overflow-y: auto !important;
   height: 84vh;
+  overflow-x: hidden;
 
   .relative;
   padding: 0;
@@ -15,7 +16,7 @@
 text-decoration: none;
 }
 .right_details {
-  position: static;
+  position: relative;
   .d-inline;
 
   @media @medium {
@@ -25,7 +26,19 @@ text-decoration: none;
 }
 #carouselExampleIndicators {
   .relative;
+  border-bottom: solid 3px black;
+  &:after {
+    content: "";
+    width: 100%;
+    .absolute;
+    height: 2px;
+    background-color: @main-color;
+    left: 0;
+    bottom: -5px;
+    z-index: 4;
+  }
 }
+
  ::ng-deep .mat-dialog-container {
   padding: 0;
 
@@ -41,20 +54,64 @@ text-decoration: none;
 }
 .carousel-control-prev-icon, .carousel-control-next-icon {
   background-color: black;
-  height: 40px;
+  height: 60px;
   width: 40px;
-  padding: 10px;
-}
-
-#button_wrapper {
-  text-align: center;
-  background-color: yellow;
-  .absolute;
   left: 0;
-  bottom: 20px;
+  //padding: 10px;
+}
+.carousel-control-next {
+  justify-content: flex-end;
+}
+.carousel-control-prev {
+  justify-content: left;
+}
+.button_wrappers {
+  text-align: center;
   width: 100%;
+  display: flex;
+  justify-content: space-around;
+
   @media @medium {
     bottom: 0;
+  }
+}
+
+        #github_btn {
+          &:before {
+            content: 'Github';
+          }
+          &:after {
+            content: '\f09b';
+            font-family: 'Font Awesome 5 Brands';
+          }
+        }
+        #site_btn {
+          &:before {
+            content: 'Strona';
+          }
+          &:after {
+            content: '\f108';
+          }
+        }
+        #leave_btn {
+          &:before {
+            content: 'Wyjdź';
+          }
+          &:after {
+            content: '\f52a';
+          }
+        }
+#gray_hover {
+  .w(100%);
+  margin: 20px 0 40px;
+  background-color: lighten(lightgray, 10%);
+  .center-text;
+  &:first-letter {
+    color: @main-color;
+    font-size: 120%;
+  }
+  @media @medium {
+    margin-bottom: 70px;
   }
 }
 #description_wrapper {
@@ -72,11 +129,15 @@ text-decoration: none;
   }
 }
 .left_details {
-  .relative;
+  h2 {
+    &:first-letter {
+      color: @main-color;
+    }
+  }
   .d-inline;
-  padding: 10px 25px 50px;
+  padding: 10px 25px 20px;
   @media @medium {
-    height: 600px;
+    height: 580px;
     transform: translateX(-100%);
   }
 
@@ -100,11 +161,41 @@ text-decoration: none;
   margin-top: 20px;
   .w(100%);
   text-align: center;
+  h4 {
+    margin: 0 0 20px;
+  }
 
   img {
-    height: 50px;
-    width: auto;
-    margin-left: 10px;
+    height: 30px;
+    .w(auto);
+    margin-left: 5px;
+    .c-pointer;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter:         drop-shadow(5px 5px 5px #222);
+    @media @small {
+      height: 40px;
+    }
+    @media @medium {
+      margin-left: 10px;
+      height: 45px;
+    }
+    &:hover, &:focus {
+      -webkit-filter: brightness(70%);
+      filter: brightness(70%);
+    }
+
+  }
+}
+#responsive_wrapper {
+
+  .center-text;
+  .w(100%);
+  @media @medium {
+    .absolute;
+    right: 0;
+    bottom: 0;
+    transform: translateX(calc(100%));
+    //transform: translateX(calc(100% + 50px)) translateY(-50%);
 
   }
 }

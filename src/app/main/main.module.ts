@@ -18,6 +18,6 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
   ],
   declarations: [ ContentComponent, ProjectDetailsComponent],
   exports: [ContentComponent],
-  entryComponents: [ProjectDetailsComponent]
+  entryComponents: [ProjectDetailsComponent],
 })
 export class MainModule { }

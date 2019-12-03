@@ -105,24 +105,49 @@ export class ContentComponent implements OnInit, AfterViewInit{
   private ctx: CanvasRenderingContext2D;
 
   state = 'hide';
-  projects: Project[] = [ {
-    id: 1,
-    img_url: '../../../assets/images/furni.png',
-    language: 'JavaScript',
-    name: 'Furniture_App',
-    description: 'Aplikacja meblowa jak ją nazwałem, była moją pierwszą aplikacją wykonaną przy wykorzystaniu języka JavaScript oraz biblioteki JQuery.' +
-    'Aplikacja ta służyłą prostej wizualizacji elementów meblowych i skomponowanie mini kuchni.',
-    tools: 'HTML5, CSS3, JavaScript, JQuery, Bootstrap',
-    gitUrl: 'https://github.com/skrzeku/furniture_app'
-  },
+  projects: Project[] = [
     {
-      id: 2,
-      img_url: '../../../assets/images/site.png',
-      language: 'JavaScript',
-      name: 'First WebSite',
-      description: 'Moja pierwsza strona internetowa, która była kolejnym etapem poznawania technologii front-endowych.',
-      tools: 'HTML5, CSS3, JavaScript, JQuery, Bootstrap',
-      gitUrl: 'https://github.com/skrzeku/Site'
+      id: 7,
+      img_url: '../../../assets/images/domekon_graphic2.png',
+      language: 'Wordpress',
+      name: 'domekon.pl',
+      description: 'Ten projekt nie jest mojego autorstwa, jeden z klientów zgłosił się do mnie w celu wprowadzenia poprawek stylistycznych, klilku funkcjonalności przy użyciu JS oraz poprawienie aplikacji względem SEO. ' +
+      'Dla mnie było to cenne doświadczenie w pracy z nową technologią jaką jest Wordpress.',
+      tools: 'Wordpress, CSS, HTML5, PHP, RWD',
+      deploy: true,
+      deploy_url: 'http://domekon.pl',
+      first_slide: 'domekon_slide1',
+      sec_slide: 'domekon_slide2',
+      third_slide: 'domekon_slide3'
+    },
+    {
+      id: 5,
+      img_url: '../../../assets/images/autocentermain.png',
+      language: 'Angular',
+      name: 'Auto-center',
+      description: 'Mój trzeci projekt aplikacji typu SPA (Single Page Application) wykonana przy użyciu Angular 6 oraz technologii backend Google Firebase. ' +
+      'Stylując tą aplikację wzorowałem się na aplikacji otomoto.pl. Nad tą aplikacją stale pracuje. W finalnej wersji znajdować się bedzie pełny system logowania, ' +
+      'zaawansowany routing z nałożonymi Guardami. Możliwość dodawania, edytowania, usuwania pojazdów, oraz automatyczne usuwanie pojazdów po upływie określonego czasu. ' +
+      'Obecna opublikowana wersja: https://skrzeku.github.io',
+      tools: 'TypeScript, Angular v6, HTML5, LESS, Node.js, Google Firebase, Angular Material, Bootstrap, RWD',
+      gitUrl: 'https://github.com/skrzeku/Auto-Center',
+      deploy: true,
+      deploy_url: 'https://skrzeku.github.io',
+      first_slide: 'autocenterslide1',
+      sec_slide: 'autocenterslide2',
+      third_slide: 'autocenterslide3'
+
+    },
+
+    {
+      id: 8,
+      img_url: '',
+      language: 'Angular',
+      name: 'skrzeszewski.pl',
+      description: 'Obecne moje portfolio',
+      tools: 'Angular, HTML5, LESS, Bootstrap, RWD, TypeScript',
+      deploy: true,
+      deploy_url: 'http://skrzeszewski.pl'
     },
     {
       id: 3,
@@ -131,8 +156,9 @@ export class ContentComponent implements OnInit, AfterViewInit{
       name: 'Small Shop',
       description: 'Moja pierwsza aplikacja typu SPA. W 100% wymyślona i zrobiona przeze mnie. Wzorowałem się tutaj na aplikacji olx.pl. Aplikacja ta pozwala dodawać, edytować produkty dla zarejestrowanych użytkowników. W pełni również został zrobiony ' +
       'system logowania. Wszystko to dzięki aplikacji Rest API do której tworzenia wykorzystałem framework Loopback',
-      tools: 'TypeScript, Angular v4, Rest API, Loopback, HTML5, LESS, Bootstrap',
-      gitUrl: 'https://github.com/skrzeku/SmallShop'
+      tools: 'TypeScript, Angular v4, Rest API, Loopback, HTML5, LESS, Bootstrap, RWD',
+      gitUrl: 'https://github.com/skrzeku/SmallShop',
+      deploy: false
     },
     {
       id: 4,
@@ -140,31 +166,26 @@ export class ContentComponent implements OnInit, AfterViewInit{
       language: 'Angular',
       name: 'Current WebSite',
       description: 'Moja obecna strona internetowa. Jest to aplkiacja typu SPA. Była to moja druga aplikacja w której wykorzystałem nowoczesny framework Javascript - Angular.',
-      tools: 'TypeScript, Angular v6, HTML5, Sass, Bootstrap, Node.js',
-      gitUrl: 'https://github.com/skrzeku/portfolio'
+      tools: 'TypeScript, Angular v6, HTML5, Sass, Bootstrap, Node.js, RWD',
+      gitUrl: 'https://github.com/skrzeku/portfolio',
+      deploy: true,
+      deploy_url: 'http://skrzeszewski.pl'
     },
     {
-      id: 5,
-      img_url: '../../../assets/images/auto-center.png',
-      language: 'Angular',
-      name: 'Auto-center',
-      description: 'Mój trzeci projekt aplikacji typu SPA (Single Page Application) wykonana przy użyciu Angular 6 oraz technologii backend Google Firebase. ' +
-      'Stylując tą aplikację wzorowałem się na aplikacji otomoto.pl. Nad tą aplikacją stale pracuje. W finalnej wersji znajdować się bedzie pełny system logowania, ' +
-      'zaawansowany routing z nałożonymi Guardami. Możliwość dodawania, edytowania, usuwania pojazdów, oraz automatyczne usuwanie pojazdów po upływie określonego czasu. ' +
-      'Obecna opublikowana wersja: https://skrzeku.github.io',
-      tools: 'TypeScript, Angular v6, HTML5, LESS, Node.js, Google Firebase, Angular Material, Bootstrap, ',
-      gitUrl: 'https://github.com/skrzeku/Auto-Center'
-    },
-    {
-      id: 7,
-      img_url: '../../../assets/images/domekon2.png',
-      language: 'Wordpress',
-      name: 'domekon.pl',
-      description: 'Ten projekt nie jest mojego autorstwa, jeden z klientów zgłosił się do mnie w celu wprowadzenia poprawek stylistycznych, klilku funkcjonalności przy użyciu JS oraz poprawienie aplikacji względem SEO. ' +
-      'Dla mnie było to cenne doświadczenie w pracy z nową technologią jaką jest Wordpress.',
-      tools: 'Wordpress, CSS, HTML5, PHP',
-      gitUrl: 'http://domekon.pl'
-    }];
+    id: 1,
+    img_url: '../../../assets/images/furni.png',
+    language: 'JavaScript',
+    name: 'Furniture_App',
+    description: 'Aplikacja meblowa jak ją nazwałem, była moją pierwszą aplikacją wykonaną przy wykorzystaniu języka JavaScript oraz biblioteki JQuery.' +
+    'Aplikacja ta służyłą prostej wizualizacji elementów meblowych i skomponowanie mini kuchni.',
+    tools: 'HTML5, CSS3, JavaScript, JQuery, Bootstrap',
+    gitUrl: 'https://github.com/skrzeku/furniture_app',
+    deploy: false
+  },
+
+
+
+   ];
         //To flter of projects at the begin of component projects.length should be equal to 0
   filters: Filter[] = [];
 
@@ -196,7 +217,6 @@ export class ContentComponent implements OnInit, AfterViewInit{
       vy: 2,
       radius: 25,
       color: 'blue',
-
     };
   }
 

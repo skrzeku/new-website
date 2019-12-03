@@ -34,10 +34,9 @@
 
 
         <div class="homesection">
-          <p>Witam</p>
-           <p>nazywam się</p> <h1><b id="pawelbold">Paweł Skrzeszewski</b><br />
+          <h1><b id="pawelbold">Paweł Skrzeszewski</b><br />
              front-end <span id="span_developer">d</span><span>eveloper</span> </h1>
-        <button mat-raised-button class="header_btn" (click)="ScrollToElement('#about_section')">Poznaj Mnie!</button>
+        <button mat-raised-button class="header_btn" id="front_btn" (click)="ScrollToElement('#about_section')">Poznaj Mnie!</button>
 
 
         </div>
@@ -91,10 +90,39 @@
                                 <div class="row">
 
 
-                                <div class="col-12 col-md-6 left_skills">
-                                  Opis Co się nauczyłem plus ikony na dole
+                                <div class="col-12 col-md-7 left_skills">
+                                  Programowaniem front-endowym zaraziłem się ponad 4 lata temu. Od samego początku mojej przygody to ekosystem <span>Javascript</span> inspirował mnie do robienia coraz większych raczy i pogłebiania swojej wiedzy w tym kierunku.
+                                  Obecnie moją prawdziwą pasją jest tworzenie interaktywnych i responsywnych stron internetowych oraz aplikacji typu SPA do których wykorzystuję framework Javascript - <span>Angular</span> oraz <span>TypeScript</span>. Aplikacje styluje używając preprocesorów CSS zamiennie <span>LESS</span> i <span>Sass</span>.
+                                  Strukturę moich aplikacji stanowią oczywiście elementy HTML. W tworzeniu responsywnych aplikacji wspomagam się przeważnie frameworkiem Bootstrap stosując techniki <span>RWD</span> z motywem przewodnim "mobile first". W pracy z ostatnimi projektami nabyłem również cenne
+                                  umiejętności w zakresie pozycjonowania oraz testowania aplikacji klienckich. Gwarantuje jednocześnie, że moje aplikacje w wersji finalnej będą:
+                                  <div id="left_skills_icons">
+                                    <div>
+                                      <h6>Responsywne</h6>
+                                      <span>
+                                      <img src="../../../assets/images/home_responsive.png">
+                                    </span>
+                                    </div>
+                                    <div>
+                                      <h6 id="less_margin">Przyjazne SEO</h6>
+                                      <span>
+                                       <img src="../../../assets/images/home_SEO.png">
+                                    </span>
+                                    </div>
+                                    <div>
+                                      <h6>Szybkie</h6>
+                                      <span>
+                                       <img src="../../../assets/images/speed-icon-png-19.png" id="bigger_img">
+                                    </span>
+                                    </div>
+
+
+
+
+
+
+                                  </div>
                                 </div>
-                                <div class="col-12 col-md-6 abilities_rows">
+                                <div class="col-12 col-md-5 abilities_rows">
                                   <ul id="abilisties_ul" class="m-0 p-0" >
 
                                     <li class="progress-bar-striped"><div class="eighty progress-bar-striped progress-bar-animated" [@Animatepercents]="state"><span>HTML5</span></div><span class="percent_span"></span></li>
@@ -142,6 +170,7 @@
                   </div>
                 </div>
 
+
               </div>
             </div>
           </section>
@@ -177,7 +206,7 @@
                   </div>
                 </form>
                 <div id="btn_wrapper">
-                  <button mat-raised-button class="header_btn" (click)="SendMail()">Wyślij</button>
+                  <button mat-raised-button class="header_btn" id="mail_btn" (click)="SendMail()">Wyślij</button>
                 </div>
               </div>
 

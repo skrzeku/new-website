@@ -13,6 +13,7 @@
   right: 90px;
 .rotate(369deg);
   opacity: 0.8;
+
 }
 100% {
   right: 0;
@@ -75,6 +76,14 @@
 #first_section {
   height: 100vh;
 
+}
+#front_btn {
+  &:before {
+    content: 'Poznaj Mnie!';
+  }
+  &:after {
+    content: '\f103';
+  }
 }
 #mycanvas {
   width: 100%;
@@ -165,7 +174,7 @@
 }
 .homesection {
   position: relative;
-  top: 35%;
+  top: 32%;
   z-index: 11;
   transform: translateY(-50%);
   @media @small {
@@ -208,6 +217,7 @@
 }     #about_left {
   padding: 40px 15px;
   color: whitesmoke;
+  font-size: 1.1rem;
       }
       #about_right {
         padding: 40px 10px;
@@ -252,6 +262,89 @@
               padding-bottom: 100px;
             }
 
+          }
+          .left_skills {
+            font-size: 1.1rem;
+            text-align: justify;
+
+            &:first-letter {
+              margin-left: 30px;
+              color: @main-color;
+              font-size: 1.3rem;
+              font-weight: bold;
+            }
+            span {
+              color: @main-color;
+              font-weight: 600;
+            }
+          }
+          #left_skills_icons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+            padding-bottom: 40px;
+
+            div {
+              vertical-align: top;
+            }
+
+            span {
+              background-color: @main-color;
+              .w(50px);
+              height: 50px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              transform: rotate(45deg);
+              box-shadow: 10px 10px 10px 0 #ccc;
+              -webkit-box-shadow: 10px 10px 10px 0 #ccc;
+              -moz-box-shadow: 10px 10px 10px 0 #ccc;
+
+              @media @small {
+                .w(60px);
+                height: 60px;
+              }
+              @media @medium {
+                .w(85px);
+                height: 85px;
+              }
+
+
+            }
+            img {
+              width: 70%;
+              height: auto;
+              transform: rotate(-45deg);
+              filter: brightness(0) invert(1);
+              -webkit-filter: brightness(0) invert(1);
+
+            }
+            #bigger_img {
+              .w(95%);
+            }
+
+            h6 {
+              //margin-left: -60px;
+              word-wrap: break-word;
+              margin-bottom: 20px;
+              margin-left: -10px;
+              .font-bold;
+              @media @small {
+                margin-left: -40px;
+                transform: rotate(-45deg);
+              }
+            }
+
+          #less_margin {
+            margin-left: -20px;
+            margin-top: -20px;
+            margin-bottom: 40px;
+            @media @small {
+              margin-left: -60px;
+              margin-bottom: 20px;
+              margin-top: 0;
+            }
+          }
           }
 
 
@@ -381,12 +474,15 @@
                 z-index: 1;
                 margin: 15px 10px 0;
                 .d-inline;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
                 &:after {
                   .absolute;
                   content: '';
                   height: 0;
                   .w(100%);
-                  background-color: rgba(225,225,225, 0.1);
+                  background-color: rgba(0,0,0, 0.7);
                   bottom: 0;
                   left: 0;
                   .custom_transition(all 0.2s ease-in);
@@ -421,6 +517,12 @@
                opacity: 0;
                bottom: 50px;
                .custom_transition(all 0.4s ease);
+               &:before {
+                 content: 'Zobacz';
+               }
+               &:after {
+                 content: '\f52b';
+               }
              }
              #project_span {
                .absolute;
@@ -429,11 +531,13 @@
                opacity: 0;
                transform: translateX(-50%);
                top: 30px;
+               font-weight: bold;
+               font-size: 1.3rem;
                .custom_transition(all 0.4s ease);
                &:first-letter {
                  color: @main-color;
                  font-weight: 900;
-                 font-size: 120%;
+                 font-size: 1.4rem;
                }
 
              }
@@ -506,6 +610,14 @@
                 .w(100%);
                 .center-text;
               }
+              #mail_btn {
+                &:before {
+                  content: 'Wyślij';
+                }
+                &:after {
+                  content: '\f1d8';
+                }
+              }
               .myform {
                 margin-top: 40px;
                 @media @medium {
@@ -557,13 +669,14 @@
                     color: @main-color;
                     font-weight: bold;
                     text-transform: uppercase;
-                    font-size: 50px !important;
+                    font-size: 35px;
                     opacity: 0;
                     top: -100px;
                     overflow-x: hidden;
                     .relative;
                     @media @medium {
                       margin: 100px 0 0px;
+                      font-size: 50px;
                     }
                   }
                   .myhoverbtn {
@@ -714,7 +827,10 @@
   background-color: red;
   .d-block;
   .center-text;
-  margin: 20px auto 80px;
+  margin: 20px auto 50px;
+  @media @medium {
+    margin-bottom: 80px;
+  }
 }
 .separator_show {
   .animation(rollimg 1.2s ease-in);
