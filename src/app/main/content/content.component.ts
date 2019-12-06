@@ -7,6 +7,7 @@ import {MatDialog, MatSnackBar} from "@angular/material";
 import {Filter} from "../../core-module/pipes/filter.model";
 import {ProjectDetails} from "@angular/cli/utilities/project";
 import {ProjectDetailsComponent} from "../project-details/project-details.component";
+import Typed from 'typed.js';
 
 
 
@@ -92,6 +93,8 @@ export class ContentComponent implements OnInit, AfterViewInit{
   small_navi_bool: boolean = false;
   project_hover_bool: boolean = false;
   project_show_bool: boolean = false;
+  hobbyiconsshow: boolean = false;
+  skillsiconsshow: boolean = false;
   mylo: number;
   newinterval;
 
@@ -151,36 +154,45 @@ export class ContentComponent implements OnInit, AfterViewInit{
     },
     {
       id: 3,
-      img_url: '../../../assets/images/smallsho.png',
+      img_url: '../../../assets/images/smallshopmain.png',
       language: 'Angular',
       name: 'Small Shop',
       description: 'Moja pierwsza aplikacja typu SPA. W 100% wymyślona i zrobiona przeze mnie. Wzorowałem się tutaj na aplikacji olx.pl. Aplikacja ta pozwala dodawać, edytować produkty dla zarejestrowanych użytkowników. W pełni również został zrobiony ' +
       'system logowania. Wszystko to dzięki aplikacji Rest API do której tworzenia wykorzystałem framework Loopback',
       tools: 'TypeScript, Angular v4, Rest API, Loopback, HTML5, LESS, Bootstrap, RWD',
       gitUrl: 'https://github.com/skrzeku/SmallShop',
-      deploy: false
+      deploy: false,
+      first_slide: 'smallshopslide1',
+      sec_slide: 'smallshopslide2',
+      third_slide: 'smallshopslide3'
     },
     {
       id: 4,
-      img_url: '../../../assets/images/portfolio.png',
+      img_url: '../../../assets/images/skrzeszewskiplmain.png',
       language: 'Angular',
       name: 'Current WebSite',
       description: 'Moja obecna strona internetowa. Jest to aplkiacja typu SPA. Była to moja druga aplikacja w której wykorzystałem nowoczesny framework Javascript - Angular.',
       tools: 'TypeScript, Angular v6, HTML5, Sass, Bootstrap, Node.js, RWD',
       gitUrl: 'https://github.com/skrzeku/portfolio',
       deploy: true,
-      deploy_url: 'http://skrzeszewski.pl'
+      deploy_url: 'http://skrzeszewski.pl',
+      first_slide: 'currentslide1',
+      sec_slide: 'currentslide2',
+      third_slide: 'currentslide3'
     },
     {
     id: 1,
-    img_url: '../../../assets/images/furni.png',
+    img_url: '../../../assets/images/furnituremain.png',
     language: 'JavaScript',
     name: 'Furniture_App',
     description: 'Aplikacja meblowa jak ją nazwałem, była moją pierwszą aplikacją wykonaną przy wykorzystaniu języka JavaScript oraz biblioteki JQuery.' +
     'Aplikacja ta służyłą prostej wizualizacji elementów meblowych i skomponowanie mini kuchni.',
     tools: 'HTML5, CSS3, JavaScript, JQuery, Bootstrap',
     gitUrl: 'https://github.com/skrzeku/furniture_app',
-    deploy: false
+    deploy: false,
+      first_slide: 'furnitureslide1',
+      sec_slide: 'furnitureslide2',
+      third_slide: 'furnitureslide3'
   },
 
 
@@ -197,6 +209,13 @@ export class ContentComponent implements OnInit, AfterViewInit{
   ngOnInit() {
     this.ctx = this.canvas.nativeElement.getContext('2d');
 
+    const options = {
+      strings: ['front-end <strong style="color: red">d</strong>eveloper'],
+      typeSpeed: 100
+    };
+
+    const typed = new Typed('#typewrite', options);
+
 
     //this.anotherAnimate();
 
@@ -206,8 +225,9 @@ export class ContentComponent implements OnInit, AfterViewInit{
     this.portfolio_position = this.portfolio.nativeElement.getBoundingClientRect().top;
     this.contact_position = this.contact.nativeElement.getBoundingClientRect().top;
     this.abilities_position = this.abilities.nativeElement.getBoundingClientRect().top;
-    console.log(this.childnavi);
+
     this.SetDefaultPosition();
+
 
 
     this.BallElement = {
@@ -225,11 +245,12 @@ export class ContentComponent implements OnInit, AfterViewInit{
 
     const CurrenScrollPosition = window.pageYOffset;
     this.CheckBoolean();
-    this.CheckSkills();
+
     if (CurrenScrollPosition >= this.about_position - 250) {
       this.RemoveClassActive();
       this.AddClassActive(0);
       this.about_header_boolean = true;
+      this.AboutIcons();
     }
 
     if (CurrenScrollPosition >= this.abilities_position - 250) {
@@ -238,6 +259,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
       this.skill_header_boolean = true;
       this.state = 'show';
       this.getpercentWidth();
+      this.CheckSkills();
 
 
     }
@@ -255,11 +277,12 @@ export class ContentComponent implements OnInit, AfterViewInit{
     }
   }
           //navi should be absolute for the smallest devices
-  CheckWidth() {
-    if (window.innerWidth < 992) {
-      this.navigation.fixedboolean = false;
+
+  AboutIcons() {
+    if (window.pageYOffset >= this.about_position) {
+      this.hobbyiconsshow = true;
+      return false;
     }
-    else this.navigation.fixedboolean = true;
   }
 
   CheckBoolean() {
@@ -273,16 +296,10 @@ export class ContentComponent implements OnInit, AfterViewInit{
     }
   }
   CheckSkills () {
-    const scrollposition = window.pageYOffset;
-    const elementPosition = this.col12heared.nativeElement.offsetTop;
-
-    if (scrollposition >= elementPosition - 300) {
-
-
-    }
-    if (scrollposition <= elementPosition - 300 || scrollposition >= this.portfolio_position) {
-      return;
-    }
+   if (window.pageYOffset >= this.abilities_position) {
+     this.skillsiconsshow = true;
+     return false;
+   }
   }
   private AddClassActive (numb: number): void {
     const siema = document.querySelectorAll('.navigate').item(numb);
@@ -384,13 +401,12 @@ export class ContentComponent implements OnInit, AfterViewInit{
        value: attr
      });
    }
-
   }
   openProjectDetails(project, e) {
     e.preventDefault();
     this.dialog.open(ProjectDetailsComponent, {data: project});
-
   }
+
 
   drawball () {
     requestAnimationFrame(()=> this.drawball());
@@ -421,7 +437,9 @@ export class ContentComponent implements OnInit, AfterViewInit{
 
 
   onsucces(): void {
-    this.snack.open('Email wysłany poprawnie');
+    this.snack.open('Email wysłany poprawnie', '', {
+      duration: 256000
+    });
   }
   getpercentWidth(): void {
 
@@ -434,7 +452,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
 
     let i = 0;
     let z = 0;
-      let inter = setInterval(()=> {
+      let inter = setInterval(() => {
         if (z >= 110) {
         clearInterval(inter);
         }
@@ -453,7 +471,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
 
   SendMail(): void {
     const data = {
-      service_id: 'skrzekugmail',
+      service_id: 'gmailskrzeku',
       template_id: 'mytemplate',
       user_id: 'user_7IplmzdpkPdh019K7I4Ey',
       template_params: {

@@ -29,8 +29,8 @@ export class ProjectDetailsComponent implements OnInit, AfterViewInit {
     const arrayimgs = Array.from(all_imgs);
     const grayelement = this.gray_hover.nativeElement;
 
-    arrayimgs.forEach((el)=> {
-      el.addEventListener('click', ()=> {
+    arrayimgs.forEach((el) => {
+      el.addEventListener('click', () => {
       const alt = el.getAttribute('alt');
       grayelement.innerText = alt;
       });

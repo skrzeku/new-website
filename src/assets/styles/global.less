@@ -93,10 +93,10 @@ div, span, p {
   }
 }
 
-.animation(@arguments) {
-  -webkit-animation: @arguments;
-  -moz-animation: @arguments;
-  animation: @arguments;
+.animation(@arguments, @secargument: '') {
+  -webkit-animation: @arguments, @secargument;
+  -moz-animation: @arguments, @secargument;
+  animation: @arguments, @secargument;
 }
       //btn animation
 .btn {
@@ -158,6 +158,16 @@ div, span, p {
   border-color: transparent transparent @color transparent;
   transform: rotate(180deg) translateX(50%);
 }
+.aftericons {
+  .w(0);
+  height: 0;
+  .absolute;
+  content: "";
+  z-index: 10;
+  border-style: solid;
+  border-width: 15px 15px 15px;
+  border-color: transparent transparent white transparent;
+}
 .header_btn {
   .relative;
   outline: 0;
@@ -207,6 +217,14 @@ div, span, p {
     transform: translateX(100%);
   }
 }
+.transition-delay(@time) {
+  transition-delay: @time;
+  -moz-transition-delay: @time;
+  -webkit-transition-delay: @time;
+  -o-transition-delay: @time;
+}
+
+
                 //to hide focus effect
 
         .mat-button-focus-overlay {

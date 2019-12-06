@@ -34,9 +34,10 @@
 
 
         <div class="homesection">
-          <h1><b id="pawelbold">Paweł Skrzeszewski</b><br />
-             front-end <span id="span_developer">d</span><span>eveloper</span> </h1>
-        <button mat-raised-button class="header_btn" id="front_btn" (click)="ScrollToElement('#about_section')">Poznaj Mnie!</button>
+          <h1><b id="pawelbold">Paweł <strong>Skrzeszewski</strong></b><br />
+             <span id="typewrite"></span> </h1>
+          <span class="typeit" style="display: none"> front-end developer</span>
+        <button mat-raised-button class="header_btn mains" id="front_btn" (click)="ScrollToElement('#about_section')">Poznaj Mnie!</button>
 
 
         </div>
@@ -64,15 +65,48 @@
                 <h2 class="hearder_section" [ngClass]="{'header_show': about_header_boolean}">O MNIE</h2>
                 <div class="header_separator" [ngClass]="{'separator_show': about_header_boolean}"></div>
               </div>
-              <div class="col-12 offset-md-1 col-md-6" id="about_left">
-                Pochodzę z Polski i mam 27 lat. Dorastałem w małym mieście nieopodal Olsztyna. Ukończyłem Uniwersytet Warmińsko-Mazurski z tytułem inżyniera na kierunku Zarządzanie
-                i Inżynieria Produkcji.
-                Obecnie mieszkam w Gdańsku i rozwijam się dalej jako front-end developer w pracy z własnymi projektami.
-                Jestem otwarty na wszelkie formy współpracy które pozwolą mi doskonalić moją wiedzę. Prywatnie jestem bardzo miłym człowiekiem,
-                uwielbiam piłkę nożną, kolarstwo i dobrą kawę :)
+              <div class="col-12 offset-lg-1 col-lg-7" id="about_left">
+                <div class="row" id="about_left_info">
+                  <div class="col-12 col-md-6">
+                    <img src="../../../assets/images/position.png" class="about_info_icons" [ngClass]="{'about_info_icons_shown': about_header_boolean}">
+                    <p>
+                      Urodziłem się w Olsztynie na początku 1992r. Dorastałem w małym mieście nieopodal Olsztyna - Barczewo, gdzie również rozpoczynałem swoją edukację. Obecnie mieszkam w Gdańsku.
+                    </p>
+
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <img src="../../../assets/images/education.png" class="about_info_icons" [ngClass]="{'about_info_icons_shown': about_header_boolean}">
+                    <p>Jako szkołę średnią wybrałem Technikum nr 7 w Olsztynie, którą ukończyłem z tytułem technika Ekonomisty. Po szkole średniej przyszedł czas na studia czyli Uniwersytet Warmińsko-Mazurski w Olsztynie i tytuł Inżyniera Produkcji.</p>
+                  </div>
+                  <div class="col-12" id="hobbies">
+                    <h4>Zainteresowania</h4>
+                    <div class="hiddenicon" [ngClass]="{'showicon': hobbyiconsshow}">
+                      <span id="first_span">
+                      <img src="../../../assets/images/cycling.png" alt="Kolarstwo szosowe">
+                    </span>
+                      <p>Kolarstwo</p>
+                    </div>
+
+                    <div class="hiddenicon" [ngClass]="{'showicon': hobbyiconsshow}">
+                       <span id="sec_span">
+                      <img src="../../../assets/images/travel.png" alt="Podróżowanie po Europie">
+                    </span>
+                      <p>Podróżowanie</p>
+                    </div>
+                    <div class="hiddenicon" [ngClass]="{'showicon': hobbyiconsshow}">
+                       <span id="third_span">
+                      <img src="../../../assets/images/fishing.png" alt="Wędkarstwo">
+                    </span>
+                      <p>Wędkarstwo</p>
+                    </div>
+                  </div>
+                </div>
+
               </div>
-              <div class="col-12 col-md-4" id="about_right">
-                <div class="rounded-img" [ngClass]="{'rounded_shown': about_header_boolean}"><div><i class="fab fa-linkedin-in"></i></div></div>
+              <div class="offset-2 col-8 offset-lg-0 col-lg-3" id="about_right">
+                <div class="responsive_img">
+                  <img src="../../../assets/images/smallshopmain.png" class="rounded-img" [ngClass]="{'rounded_shown': about_header_boolean}">
+                </div>
               </div>
             </div>
           </div>
@@ -96,19 +130,19 @@
                                   Strukturę moich aplikacji stanowią oczywiście elementy HTML. W tworzeniu responsywnych aplikacji wspomagam się przeważnie frameworkiem Bootstrap stosując techniki <span>RWD</span> z motywem przewodnim "mobile first". W pracy z ostatnimi projektami nabyłem również cenne
                                   umiejętności w zakresie pozycjonowania oraz testowania aplikacji klienckich. Gwarantuje jednocześnie, że moje aplikacje w wersji finalnej będą:
                                   <div id="left_skills_icons">
-                                    <div>
+                                    <div class="hiddenicon" [ngClass]="{'showicon': skillsiconsshow}">
                                       <h6>Responsywne</h6>
                                       <span>
                                       <img src="../../../assets/images/home_responsive.png">
                                     </span>
                                     </div>
-                                    <div>
+                                    <div class="hiddenicon" [ngClass]="{'showicon': skillsiconsshow}">
                                       <h6 id="less_margin">Przyjazne SEO</h6>
                                       <span>
                                        <img src="../../../assets/images/home_SEO.png">
                                     </span>
                                     </div>
-                                    <div>
+                                    <div class="hiddenicon" [ngClass]="{'showicon': skillsiconsshow}">
                                       <h6>Szybkie</h6>
                                       <span>
                                        <img src="../../../assets/images/speed-icon-png-19.png" id="bigger_img">
@@ -206,7 +240,7 @@
                   </div>
                 </form>
                 <div id="btn_wrapper">
-                  <button mat-raised-button class="header_btn" id="mail_btn" (click)="SendMail()">Wyślij</button>
+                  <button mat-raised-button class="header_btn mains" id="mail_btn" (click)="SendMail()">Wyślij</button>
                 </div>
               </div>
 
