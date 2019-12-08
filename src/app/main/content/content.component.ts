@@ -8,6 +8,8 @@ import {Filter} from "../../core-module/pipes/filter.model";
 import {ProjectDetails} from "@angular/cli/utilities/project";
 import {ProjectDetailsComponent} from "../project-details/project-details.component";
 import Typed from 'typed.js';
+import {log} from 'util';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
 
@@ -77,26 +79,26 @@ export class ContentComponent implements OnInit, AfterViewInit{
   @ViewChild('canvas') canvas: ElementRef<HTMLCanvasElement>;
   @ViewChild('collapse') collapse: ElementRef;
   @ViewChild('first_filter') first_filter: ElementRef;
+  @ViewChild('errors') errors: ElementRef;
   about_position: number;
   portfolio_position: number;
   contact_position: number;
   abilities_position: number;
-  name = '';
-  email = '';
-  content = '';
-  x: number = 0;
-  spansboolean: boolean = false;
-  contact_header_boolean: boolean = false;
-  portfolio_header_boolean: boolean = false;
-  skill_header_boolean: boolean = false;
-  about_header_boolean: boolean = false;
-  small_navi_bool: boolean = false;
-  project_hover_bool: boolean = false;
-  project_show_bool: boolean = false;
-  hobbyiconsshow: boolean = false;
-  skillsiconsshow: boolean = false;
-  mylo: number;
-  newinterval;
+  x = 0;
+  spansboolean = false;
+  contact_header_boolean = false;
+  portfolio_header_boolean = false;
+  skill_header_boolean = false;
+  about_header_boolean = false;
+  small_navi_bool = false;
+  project_hover_bool = false;
+  project_show_bool = false;
+  hobbyiconsshow = false;
+  skillsiconsshow = false;
+  form: FormGroup;
+  error_text = 'hej';
+  showsuccess = false;
+
 
 
 
@@ -114,9 +116,8 @@ export class ContentComponent implements OnInit, AfterViewInit{
       img_url: '../../../assets/images/domekon_graphic2.png',
       language: 'Wordpress',
       name: 'domekon.pl',
-      description: 'Ten projekt nie jest mojego autorstwa, jeden z klientów zgłosił się do mnie w celu wprowadzenia poprawek stylistycznych, klilku funkcjonalności przy użyciu JS oraz poprawienie aplikacji względem SEO. ' +
-      'Dla mnie było to cenne doświadczenie w pracy z nową technologią jaką jest Wordpress.',
-      tools: 'Wordpress, CSS, HTML5, PHP, RWD',
+      description: 'domekon.pl - sklep internetowy oferujący nowoczesne meble. Projekt ten nie jest w 100% mojego autorstwa. Początkowo aplikacja ta pisana była przez inną osobę, która ustawiła szablony aplikacji, podpięła do niej bazę danych. Moją rolą w tym projekcie było dostosowanie tej aplikacji do nowoczesnych wymagań oraz trendów. Wprowadziłem bardzo dużo poprawek stylistycznych przy użyciu CSS, kilka funkcjonalności w JavaScript oraz poprawiłem widoczność dostępnych grafik. Sprawiłem, że aplikacja jest w pełni dostosowana do wszystkich urządzeń mobilnych oraz wprowadziłem zmiany mające na celu poprawienie efektywności wyszukiwania strony w nowoczesnych wyszukiwarkach.',
+      tools: 'Wordpress, CSS, HTML5, PHP, RWD, JavaScript, JQuery',
       deploy: true,
       deploy_url: 'http://domekon.pl',
       first_slide: 'domekon_slide1',
@@ -128,11 +129,8 @@ export class ContentComponent implements OnInit, AfterViewInit{
       img_url: '../../../assets/images/autocentermain.png',
       language: 'Angular',
       name: 'Auto-center',
-      description: 'Mój trzeci projekt aplikacji typu SPA (Single Page Application) wykonana przy użyciu Angular 6 oraz technologii backend Google Firebase. ' +
-      'Stylując tą aplikację wzorowałem się na aplikacji otomoto.pl. Nad tą aplikacją stale pracuje. W finalnej wersji znajdować się bedzie pełny system logowania, ' +
-      'zaawansowany routing z nałożonymi Guardami. Możliwość dodawania, edytowania, usuwania pojazdów, oraz automatyczne usuwanie pojazdów po upływie określonego czasu. ' +
-      'Obecna opublikowana wersja: https://skrzeku.github.io',
-      tools: 'TypeScript, Angular v6, HTML5, LESS, Node.js, Google Firebase, Angular Material, Bootstrap, RWD',
+      description: 'Mój trzeci projekt aplikacji typu SPA (Single Page Application) wykonana przy użyciu Angular 6 oraz technologii backend Google Firebase. Nad tą aplikacją stale pracuje. W finalnej wersji znajdować się będzie pełny system logowania/rejestracji, zaawansowany routing z nałożonymi Guardami. Możliwość dodawania, edytowania, usuwania pojazdów przez uprawnionych użytkowników. W aplikacji wprowadziłem również tzw. "lazy loading", aby przyspieszyć lądowanie stanu początkowego. Projekt będzie również w pełni responsywny oraz przygotowany do pozycjonowania. Aplikacje chciałbym również dostosować do wszystkich urządzeń mobilnych bez wykorzystania frameworka Bootstrap.',
+      tools: 'TypeScript, Angular v6, HTML5, LESS, Node.js, Google Firebase, Angular Material, RWD',
       gitUrl: 'https://github.com/skrzeku/Auto-Center',
       deploy: true,
       deploy_url: 'https://skrzeku.github.io',
@@ -144,21 +142,23 @@ export class ContentComponent implements OnInit, AfterViewInit{
 
     {
       id: 8,
-      img_url: '',
+      img_url: '../../../assets/images/portfoliomain.png',
       language: 'Angular',
       name: 'skrzeszewski.pl',
-      description: 'Obecne moje portfolio',
+      description: "Moja obecna strona - Portfolio, w której ponownie wykorzystałem technologie Typescript oraz framework Angular v6. W stylowaniu aplikacji pomocne były zarówno elementy Bootstrap'a, jak i Angular Material oraz preprocesor LESS. W projekcie wykorzystałem więcej niż zwykle animacji przy pomocy LESS oraz Angulara. Użyłem również dekoratora @HostListener, który 'nasłuchuje' przewijanie strony i wprowadza poszczególne zmiany w animacjach. Formularz kontaktowy obsługuje serwis email.js. Filtrowanie projektów odbywa się przy pomocy własnego pipe. Strona jest w pełni responsywna i przygotowana do pozycjonowania w sieci.",
       tools: 'Angular, HTML5, LESS, Bootstrap, RWD, TypeScript',
       deploy: true,
-      deploy_url: 'http://skrzeszewski.pl'
+      deploy_url: 'http://skrzeszewski.pl',
+      first_slide: 'portfolioslide1',
+      sec_slide: 'portfolioslide2',
+      third_slide: 'portfolioslide3'
     },
     {
       id: 3,
       img_url: '../../../assets/images/smallshopmain.png',
       language: 'Angular',
       name: 'Small Shop',
-      description: 'Moja pierwsza aplikacja typu SPA. W 100% wymyślona i zrobiona przeze mnie. Wzorowałem się tutaj na aplikacji olx.pl. Aplikacja ta pozwala dodawać, edytować produkty dla zarejestrowanych użytkowników. W pełni również został zrobiony ' +
-      'system logowania. Wszystko to dzięki aplikacji Rest API do której tworzenia wykorzystałem framework Loopback',
+      description: 'Moja pierwsza aplikacja typu SPA. W 100% wymyślona i zrobiona przeze mnie. Wzorowałem się tutaj na aplikacji olx.pl. Aplikacja umożliwia operacje na produktach takie jak: dodawanie ich, usuwanie z bazy danych, pobieranie informacji oraz edytowanie. Do wymienionych operacji dostęp mieli jedynie zalogowani użytkownicy. W Aplikacji zastosowałem routing umożliwiający dostęp do poszczególnych widoków oraz nałożyłem guardy, broniące dostępu do widoków przed niezalogowanymi użytkownikami. Do napisania Aplikacji Rest Api pomocny okazał się framework LoopBack.',
       tools: 'TypeScript, Angular v4, Rest API, Loopback, HTML5, LESS, Bootstrap, RWD',
       gitUrl: 'https://github.com/skrzeku/SmallShop',
       deploy: false,
@@ -171,7 +171,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
       img_url: '../../../assets/images/skrzeszewskiplmain.png',
       language: 'Angular',
       name: 'Current WebSite',
-      description: 'Moja obecna strona internetowa. Jest to aplkiacja typu SPA. Była to moja druga aplikacja w której wykorzystałem nowoczesny framework Javascript - Angular.',
+      description: "Moją poprzednią stronę stworzyłem w Typescript przy użyciu frameworka Angular. Na stronie wprowadziłem prosty routing bez konieczności wprowadzania guardow, Strony poszczególnych projektów zostały stworzone na bazie dynamicznych komponentów. Wysyłanie wiadomości było możliwe dzięki bibliotece email.js oraz technologi AJAX. Filtrowanie projektów zrobiłem przy pomocy stworzonego Pipe. Na stronie głównej wprowadziłem również dodatkową nawigację, której zmiany nasłuchiwałem dekoratorem @HostListener i która działała na zasadzie scroll'a. Aplikacja ta jest w 100% responsywna i przygotowana do pozycjonowania w sieci.",
       tools: 'TypeScript, Angular v6, HTML5, Sass, Bootstrap, Node.js, RWD',
       gitUrl: 'https://github.com/skrzeku/portfolio',
       deploy: true,
@@ -185,8 +185,10 @@ export class ContentComponent implements OnInit, AfterViewInit{
     img_url: '../../../assets/images/furnituremain.png',
     language: 'JavaScript',
     name: 'Furniture_App',
-    description: 'Aplikacja meblowa jak ją nazwałem, była moją pierwszą aplikacją wykonaną przy wykorzystaniu języka JavaScript oraz biblioteki JQuery.' +
-    'Aplikacja ta służyłą prostej wizualizacji elementów meblowych i skomponowanie mini kuchni.',
+    description: 'Aplikacja meblowa jak ją nazwałem, była moją pierwszą aplikacją wykonaną przy wykorzystaniu języka JavaScript oraz biblioteki JQuery. ' +
+      'Aplikacja ta służyła prostej wizualizacji elementów meblowych i skomponowanie mini kuchni. Należy wybrać wielkość obszaru roboczego, ' +
+      'aby następnie móc dodawać poszczególne elementy górne lub dolne. Poszczególnego elementu nie można dodać, gdy po jego ' +
+      'dodaniu przekroczy szerokość lub wysokość obszaru roboczego',
     tools: 'HTML5, CSS3, JavaScript, JQuery, Bootstrap',
     gitUrl: 'https://github.com/skrzeku/furniture_app',
     deploy: false,
@@ -204,14 +206,20 @@ export class ContentComponent implements OnInit, AfterViewInit{
 
   constructor(private render: Renderer2,
               private snack: MatSnackBar,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog,
+              private formbuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.BuildForm();
     this.ctx = this.canvas.nativeElement.getContext('2d');
 
     const options = {
-      strings: ['front-end <strong style="color: red">d</strong>eveloper'],
-      typeSpeed: 100
+      strings: ['front-end <strong style="color: red">d</strong>eveloper', '<strong style="color: red">f</strong>ront-end developer'],
+      typeSpeed: 100,
+      backSpeed: 50,
+      backDelay: 2100,
+      loop: true,
+      loopCount: Infinity,
     };
 
     const typed = new Typed('#typewrite', options);
@@ -228,16 +236,14 @@ export class ContentComponent implements OnInit, AfterViewInit{
 
     this.SetDefaultPosition();
 
+  }
 
-
-    this.BallElement = {
-      x1: 100,
-      y: 100,
-      vx: 5,
-      vy: 2,
-      radius: 25,
-      color: 'blue',
-    };
+  private BuildForm() {
+    this.form = this.formbuilder.group({
+      name: '',
+      email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+      content: ['', [Validators.required, Validators.maxLength(170)]]
+    });
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -314,7 +320,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
   ScrollToElement(id) {
     const collapse_element = this.collapse.nativeElement;
     const elements = document.querySelector(id) as Element;
-    elements.scrollIntoView({ block: 'end',  behavior: 'smooth' });
+    elements.scrollIntoView({ block: 'nearest',  behavior: 'smooth' });
     this.render.removeClass(collapse_element, 'show');
 
   }
@@ -467,19 +473,43 @@ export class ContentComponent implements OnInit, AfterViewInit{
 
 
   }
+  ValidbeforeSend() {
+    const el = this.errors.nativeElement as HTMLElement;
+    if (this.form.invalid) {
+      if (this.form.get('content').hasError('maxlength')) {
+        this.error_text = 'BŁĄD! Przekroczono dopuszczalną ilośc znakow wiadomosci';
+      }
+      if (this.form.get('email').hasError('pattern')) {
+        this.error_text = 'BŁĄD! Nieprawidłowy format adresu email (example@gmail.com)';
+      }
+      if (this.form.get('email').hasError('required')) {
+        this.error_text = 'BŁĄD! Uzupełnij adres email';
+      }
+      if (this.form.get('content').hasError('required')) {
+        this.error_text = 'BłĄD! Pole Treści jest wymagane';
+      }
+      this.render.addClass(el, 'errorsShow');
+      setTimeout(() => {
+        this.render.removeClass(el, 'errorsShow' );
+      }, 5000);
+    }
+    else this.SendMail();
+  }
 
 
-  SendMail(): void {
+  SendMail() {
+
     const data = {
       service_id: 'gmailskrzeku',
       template_id: 'mytemplate',
       user_id: 'user_7IplmzdpkPdh019K7I4Ey',
       template_params: {
-        subject: this.name,
-        text: this.content,
-        from_email: this.email
+        subject: this.form.get('name').value,
+        text: this.form.get('content').value,
+        from_email: this.form.get('email').value
       }
     };
+    console.log(data);
 
 
     $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
@@ -487,7 +517,10 @@ export class ContentComponent implements OnInit, AfterViewInit{
       data: JSON.stringify(data),
       contentType: 'application/json'
     }).done(() => {
-      this.onsucces();
+      this.showsuccess = true;
+      setTimeout(() => {
+        this.showsuccess = false;
+      }, 5000);
 
     }).fail((error) => {
       alert('Oops... ' + JSON.stringify(error));

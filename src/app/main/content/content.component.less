@@ -72,19 +72,9 @@
                                                   opacity: 1;
                                                 }
                                                 });
-      //TypeWrite
-.keyframes(writetypes, {
-0% {
-  width: 100%;
-}
-100% {
-  width: 0;
-}
-});
-.keyframes(znak, {
-  0% { border-left-color:transparent; }
-  100% { border-left-color:black; }
-});
+
+
+
 
 
 
@@ -406,43 +396,10 @@
       }
       #about_right {
         padding: 40px 10px 0;
-        overflow-x: hidden;
+        //overflow-x: hidden;
       }
-      .rounded-img {
 
 
-      /*
-        .w(260px);
-        height: 260px;
-        border-radius: 50%;
-        margin: 0 auto;
-        right: -300px;
-        object-fit: cover;
-        opacity: 0;
-        background-image: url("../../../assets/images/brown-wooden-dock-over-body-of-water-1227520.jpg");
-        background-size: cover;
-        background-position: center center;
-        .relative;
-
-        @media @medium {
-          .w(200px);
-          height: 200px;
-        }
-
-
-        @media @medium {
-          .w(310px);
-          height: 310px;
-        }
-        */
-
-      }
-      .rounded_shown {
-       // opacity: 1;
-        //right: 0;
-        //.rotate(360deg);
-        //.animation(rollimg 1.2s linear);
-      }
 
 
                     //Abilities section
@@ -754,6 +711,7 @@
                -webkit-transform: scale3d(1, 1, 1);
                transform: scale3d(1, 1, 1);
                  .animation(slide 0.5s ease);
+               //.foo(6);
 
                &:nth-child(1) {
                  .animation(slide 1.3s ease);
@@ -777,15 +735,15 @@
 
                   //Contact Section
               #contact_section {
-                padding-bottom: 280px !important;
+                padding-bottom: 280px;
                 position: relative;
                 overflow-x: hidden;
                 -ms-overflow-x: hidden;
                 @media @medium {
-                  padding-bottom: 120px;
+                  padding-bottom: 300px;
                 }
                 @media @large {
-                  padding-bottom: 160px;
+                  padding-bottom: 300px;
                 }
               }
               #contact_header {
@@ -820,6 +778,7 @@
               #btn_wrapper {
                 .w(100%);
                 .center-text;
+
               }
               #mail_btn {
                 &:before {
@@ -849,26 +808,50 @@
 
 
               .left_contact_wrapper {
-                font-size: 130%;
 
                 div {
                   span {
                     color: @main-color;
                     font-weight: bold;
                   }
-                  a{
-                    color: gray !important;
+                  a {
+                    text-decoration: inherit;
+                    color: inherit;
+                    cursor: auto;
                   }
                 }
 
               }
                 .form-control {
-
                   &:focus {
                     box-shadow: none !important;
                     border: 1px solid @main-color;
                   }
                 }
+                .left_contact_hidden {
+                  .relative;
+                  bottom: -180px;
+                  opacity: 0;
+                }
+                .left_contact_show {
+                  bottom: 0;
+                  opacity: 1;
+                  .custom_transition(0.2s all ease);
+                  .foo(4);
+                  font-size: 1rem;
+                  @media @medium {
+                    font-size: 1.2rem;
+                  }
+                  @media @large {
+                    font-size: 1.4rem;
+                  }
+                  a {
+                    &:hover {
+                      opacity: 0.7;
+                    }
+                  }
+                }
+
 
 
 
@@ -1069,16 +1052,59 @@
   }
 }
 .responsive_img {
-  position: relative;
-  width: 100%;
+  .relative;
+  .w(100%);
   height: 0;
+  right: -250px;
+  opacity: 0;
   padding: 100% 0 0;
   border-radius: 50%;
-  overflow: hidden;
-  border: 1px solid gray;
+  z-index: 3;
+  //overflow: hidden;
+  border: 1px solid white;
+
+
   .rounded-img {
-    position: absolute; width: 100%; height: 100%; top: 0; left: 0; object-fit: cover;
+    .absolute; width: 100%; height: 100%; top: 0; left: 0; object-fit: cover; border-radius: 50%; z-index: 3;
   }
+}
+.rounded_shown {
+    opacity: 1;
+   right: 0;
+  .animation(rollimg 1.2s linear);
+}
+#content_length {
+//.relative;
+text-align: -webkit-right;
+  margin-right: 10px;
+  opacity: 0.7;
+  font-size: 1rem;
+}
+.errors {
+  background-color: @main-color;
+  color: white;
+  .w(100%);
+  margin-top: 20px;
+  .center-text;
+  .relative;
+  padding: 5px;
+  top: 150px;
+  font-size: 1.1rem;
+  opacity: 0;
+
+}
+#success {
+  background-color: forestgreen;
+  transform: translateY(-100%);
+}
+.errorsShow {
+  opacity: 1;
+  .custom_transition(0.3s all ease);
+  top: 0;
+}
+.succshow {
+  .errorsShow;
+  top: -20px;
 }
 
 

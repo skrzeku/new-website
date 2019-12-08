@@ -70,13 +70,13 @@
                   <div class="col-12 col-md-6">
                     <img src="../../../assets/images/position.png" class="about_info_icons" [ngClass]="{'about_info_icons_shown': about_header_boolean}">
                     <p>
-                      Urodziłem się w Olsztynie na początku 1992r. Dorastałem w małym mieście nieopodal Olsztyna - Barczewo, gdzie również rozpoczynałem swoją edukację. Obecnie mieszkam w Gdańsku.
+                      Urodziłem się w Olsztynie na początku 1992 r. Dorastałem w małym mieście nieopodal Olsztyna - Barczewie, gdzie również rozpoczynałem swoją edukację. Obecnie mieszkam w Gdańsku.
                     </p>
 
                   </div>
                   <div class="col-12 col-md-6">
                     <img src="../../../assets/images/education.png" class="about_info_icons" [ngClass]="{'about_info_icons_shown': about_header_boolean}">
-                    <p>Jako szkołę średnią wybrałem Technikum nr 7 w Olsztynie, którą ukończyłem z tytułem technika Ekonomisty. Po szkole średniej przyszedł czas na studia czyli Uniwersytet Warmińsko-Mazurski w Olsztynie i tytuł Inżyniera Produkcji.</p>
+                    <p>Jako szkołę średnią wybrałem Technikum nr 7 w Olsztynie, którą ukończyłem z tytułem technika Ekonomisty. Po szkole średniej przyszedł czas na studia, czyli Uniwersytet Warmińsko-Mazurski w Olsztynie i tytuł Inżyniera Produkcji..</p>
                   </div>
                   <div class="col-12" id="hobbies">
                     <h4>Zainteresowania</h4>
@@ -104,8 +104,8 @@
 
               </div>
               <div class="offset-2 col-8 offset-lg-0 col-lg-3" id="about_right">
-                <div class="responsive_img">
-                  <img src="../../../assets/images/smallshopmain.png" class="rounded-img" [ngClass]="{'rounded_shown': about_header_boolean}">
+                <div class="responsive_img" [ngClass]="{'rounded_shown': about_header_boolean}">
+                  <img src="../../../assets/images/Zdjecie%20pawel.png" class="rounded-img" >
                 </div>
               </div>
             </div>
@@ -125,10 +125,10 @@
 
 
                                 <div class="col-12 col-md-7 left_skills">
-                                  Programowaniem front-endowym zaraziłem się ponad 4 lata temu. Od samego początku mojej przygody to ekosystem <span>Javascript</span> inspirował mnie do robienia coraz większych raczy i pogłebiania swojej wiedzy w tym kierunku.
-                                  Obecnie moją prawdziwą pasją jest tworzenie interaktywnych i responsywnych stron internetowych oraz aplikacji typu SPA do których wykorzystuję framework Javascript - <span>Angular</span> oraz <span>TypeScript</span>. Aplikacje styluje używając preprocesorów CSS zamiennie <span>LESS</span> i <span>Sass</span>.
-                                  Strukturę moich aplikacji stanowią oczywiście elementy HTML. W tworzeniu responsywnych aplikacji wspomagam się przeważnie frameworkiem Bootstrap stosując techniki <span>RWD</span> z motywem przewodnim "mobile first". W pracy z ostatnimi projektami nabyłem również cenne
-                                  umiejętności w zakresie pozycjonowania oraz testowania aplikacji klienckich. Gwarantuje jednocześnie, że moje aplikacje w wersji finalnej będą:
+                                  Programowaniem front-endowym zaraziłem się ponad 4 lata temu. Od samego początku mojej przygody to ekosystem <span>Javascript</span> inspirował mnie do robienia coraz większych rzeczy i pogłębiania swojej wiedzy w tym kierunku.
+                                  Obecnie moją prawdziwą pasją jest tworzenie interaktywnych i responsywnych stron internetowych oraz aplikacji typu SPA, w których wykorzystuję framework Javascript - <span>Angular</span> oraz <span>TypeScript</span>. Aplikacje styluje używając preprocesorów CSS zamiennie <span>LESS</span> i <span>Sass</span>.
+                                  Strukturę moich aplikacji stanowią oczywiście elementy HTML. W tworzeniu responsywnych aplikacji wspomagam się przeważnie frameworkiem Bootstrap stosując techniki <span>RWD</span> z zasadą "mobile first". W pracy z ostatnimi projektami nabyłem również cenne umiejętności w zakresie pozycjonowania oraz testowania aplikacji klienckich.
+                                  Gwarantuje jednocześnie, że moje aplikacje w wersji finalnej będą:
                                   <div id="left_skills_icons">
                                     <div class="hiddenicon" [ngClass]="{'showicon': skillsiconsshow}">
                                       <h6>Responsywne</h6>
@@ -219,29 +219,34 @@
                 <h2 class="hearder_section" id="contact_header" [ngClass]="{'header_show': contact_header_boolean}">Kontakt</h2>
                 <div class="header_separator" [ngClass]="{'separator_show': contact_header_boolean}"></div>
                 <div class="left_contact_wrapper">
-                  <div><span>E-mail:</span> <a href="mailto:pawelskrzeszewski92@gmail.com"> pawelskrzeszewski92@gmail.com</a></div>
-                  <div><span>Github:</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/skrzeku"> https://github.com/skrzeku</a></div>
-                  <div><span>LinkedIn:</span> <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/paweł-skrzeszewski-847a3413a/"> /in/paweł-skrzeszewski-847a3413a/</a></div>
-                  <div><span>Telefon:</span> +48 512070640</div>
+                  <div class="left_contact_hidden" [ngClass]="{'left_contact_show': contact_header_boolean}"><span>E-mail:</span> <a href="mailto:pawelskrzeszewski92@gmail.com"> pawelskrzeszewski92@gmail.com</a></div>
+                  <div class="left_contact_hidden" [ngClass]="{'left_contact_show': contact_header_boolean}"><span>Github:</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/skrzeku"> https://github.com/skrzeku</a></div>
+                  <div class="left_contact_hidden" [ngClass]="{'left_contact_show': contact_header_boolean}"><span>LinkedIn:</span> <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/paweł-skrzeszewski-847a3413a/"> /in/paweł-skrzeszewski-847a3413a/</a></div>
+                  <div class="left_contact_hidden" [ngClass]="{'left_contact_show': contact_header_boolean}"><span>Telefon:</span> +48 512070640</div>
                 </div>
               </div>
 
                     <!-- Right Side-->
               <div class="col-12 col-md-5" id="contact_wrapper" [ngClass]="{'right_contact_shown': contact_header_boolean}">
-                <form class="myform" >
+                <form class="myform" [formGroup]="form">
                   <div class="form-group">
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Imię i nazwisko" [ngModel]="name" name="name">
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Imię i nazwisko"  formControlName="name">
                   </div>
                   <div class="form-group">
-                    <input type="email" class="form-control" id="exampleInputPassword1" placeholder="E-mail" [ngModel]="email" name="email">
+                    <input type="email" class="form-control" id="exampleInputPassword1" placeholder="E-mail" formControlName="email">
                   </div>
                   <div class="form-group">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Treść wiadomości" [ngModel]="content" name="content"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Treść wiadomości" #contentinput formControlName="content"></textarea>
+                    <div id="content_length">{{contentinput.value.length}}/170</div>
                   </div>
+
                 </form>
                 <div id="btn_wrapper">
-                  <button mat-raised-button class="header_btn mains" id="mail_btn" (click)="SendMail()">Wyślij</button>
+                  <button mat-raised-button class="header_btn mains" id="mail_btn" (click)="ValidbeforeSend()">Wyślij</button>
+                  <div class="errors" #errors>{{error_text}}</div>
+                  <div class="errors" id="success" [ngClass]="{'succshow': showsuccess}">Wiadomość została wysłana!</div>
                 </div>
+
               </div>
 
               <div class="col-12 footer">

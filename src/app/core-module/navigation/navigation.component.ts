@@ -20,7 +20,7 @@ export class NavigationComponent implements OnInit {
   }
   ScrollToElement(id) {
     const elements = document.querySelector(id) as Element;
-    elements.scrollIntoView({ block: 'end',  behavior: 'smooth' });
+    elements.scrollIntoView({ block: 'start',  behavior: 'smooth' });
   }
   show_small_navi() {
     this.navi_bool = !this.navi_bool;

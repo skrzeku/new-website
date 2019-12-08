@@ -39,7 +39,7 @@
 
       <div id="responsive_wrapper">
         <div id="right_icons_wrapper">
-          <h4>Technologie</h4>
+          <h4><i>Technologie</i></h4>
           <img src="../../../assets/images/HTML5_Badge_64.png" *ngIf="project.tools.includes('HTML5')" alt="HTML5">
           <img src="../../../assets/images/iconfinder_21_Angular_logo_logos_4373284.png" *ngIf="project.tools.includes('Angular')" alt="Angular - framework JavaScript">
           <img src="../../../assets/images/iconfinder_css3_2916226.png" *ngIf="project.tools.includes('CSS')" alt="CSS3">
@@ -59,6 +59,7 @@
           Kliknij mnie!
         </div>
         <div class="button_wrappers">
+          <div id="current_version" *ngIf="project.name.includes('Auto-center')">Obecna Wersja:</div>
           <button mat-raised-button class="header_btn" id="github_btn" *ngIf="!project.tools.includes('Wordpress')" (click)="goToGit()"></button>
           <button mat-raised-button class="header_btn" id="site_btn" *ngIf="project.deploy" (click)="gotoDeploy()">Strona</button>
           <button mat-raised-button class="header_btn" id="leave_btn" (click)="close()">Wyjdź</button>
