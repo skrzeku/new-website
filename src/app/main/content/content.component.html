@@ -19,7 +19,7 @@
 
 
         <nav class="navbar navbar-dark navbar-expand-lg justify-content-lg-between justify-content-center small_navbar">
-          <div class="navbar-brand">Paweł Skrzeszewski</div>
+          <div class="navbar-brand">skrzeszewski.pl</div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -34,7 +34,7 @@
 
 
         <div class="homesection">
-          <h1><b id="pawelbold">Paweł <strong>Skrzeszewski</strong></b><br />
+          <h1><b id="pawelbold">Paweł <strong>Skrzeszewski </strong></b><br />
              <span id="typewrite"></span> </h1>
           <span class="typeit" style="display: none"> front-end developer</span>
         <button mat-raised-button class="header_btn mains" id="front_btn" (click)="ScrollToElement('#about_section')">Poznaj Mnie!</button>
@@ -43,12 +43,7 @@
         </div>
 
       </div>
-      <div class="d-none col-md-6 d-md-inline-block right_first">
-        <canvas id="mycanvas" #canvas>
 
-        </canvas>
-        <button (click)="drawball()"></button>
-      </div>
 
     </div>
 
@@ -68,34 +63,34 @@
               <div class="col-12 offset-lg-1 col-lg-7" id="about_left">
                 <div class="row" id="about_left_info">
                   <div class="col-12 col-md-6">
-                    <img src="../../../assets/images/position.png" class="about_info_icons" [ngClass]="{'about_info_icons_shown': about_header_boolean}">
+                    <img src="../../../assets/images/position.png" class="about_info_icons" [ngClass]="{'about_info_icons_shown': about_header_boolean}" alt="Pochodzenie" title="Pochodzenie">
                     <p>
                       Urodziłem się w Olsztynie na początku 1992 r. Dorastałem w małym mieście nieopodal Olsztyna - Barczewie, gdzie również rozpoczynałem swoją edukację. Obecnie mieszkam w Gdańsku.
                     </p>
 
                   </div>
                   <div class="col-12 col-md-6">
-                    <img src="../../../assets/images/education.png" class="about_info_icons" [ngClass]="{'about_info_icons_shown': about_header_boolean}">
+                    <img src="../../../assets/images/education.png" class="about_info_icons" [ngClass]="{'about_info_icons_shown': about_header_boolean}" alt="edukacja" title="edukacja">
                     <p>Jako szkołę średnią wybrałem Technikum nr 7 w Olsztynie, którą ukończyłem z tytułem technika Ekonomisty. Po szkole średniej przyszedł czas na studia, czyli Uniwersytet Warmińsko-Mazurski w Olsztynie i tytuł Inżyniera Produkcji..</p>
                   </div>
                   <div class="col-12" id="hobbies">
-                    <h4>Zainteresowania</h4>
+                    <h3>Zainteresowania</h3>
                     <div class="hiddenicon" [ngClass]="{'showicon': hobbyiconsshow}">
                       <span id="first_span">
-                      <img src="../../../assets/images/cycling.png" alt="Kolarstwo szosowe">
+                      <img src="../../../assets/images/cycling.png" alt="Kolarstwo szosowe" title="kolarstwo szosowe">
                     </span>
                       <p>Kolarstwo</p>
                     </div>
 
                     <div class="hiddenicon" [ngClass]="{'showicon': hobbyiconsshow}">
                        <span id="sec_span">
-                      <img src="../../../assets/images/travel.png" alt="Podróżowanie po Europie">
+                      <img src="../../../assets/images/travel.png" alt="Podróżowanie po Europie" title="pozdroze">
                     </span>
                       <p>Podróżowanie</p>
                     </div>
                     <div class="hiddenicon" [ngClass]="{'showicon': hobbyiconsshow}">
                        <span id="third_span">
-                      <img src="../../../assets/images/fishing.png" alt="Wędkarstwo">
+                      <img src="../../../assets/images/fishing.png" alt="Wędkarstwo" title="wedkarstwo">
                     </span>
                       <p>Wędkarstwo</p>
                     </div>
@@ -105,7 +100,7 @@
               </div>
               <div class="offset-2 col-8 offset-lg-0 col-lg-3" id="about_right">
                 <div class="responsive_img" [ngClass]="{'rounded_shown': about_header_boolean}">
-                  <img src="../../../assets/images/Zdjecie%20pawel.png" class="rounded-img" >
+                  <img src="../../../assets/images/Zdjecie%20pawel.png" class="rounded-img" alt="pawel" title="pawel">
                 </div>
               </div>
             </div>
@@ -131,21 +126,21 @@
                                   Gwarantuje jednocześnie, że moje aplikacje w wersji finalnej będą:
                                   <div id="left_skills_icons">
                                     <div class="hiddenicon" [ngClass]="{'showicon': skillsiconsshow}">
-                                      <h6>Responsywne</h6>
+                                      <h3>Responsywne</h3>
                                       <span>
-                                      <img src="../../../assets/images/home_responsive.png">
+                                      <img src="../../../assets/images/home_responsive.png" alt="responsywne" title="responsywnośc">
                                     </span>
                                     </div>
                                     <div class="hiddenicon" [ngClass]="{'showicon': skillsiconsshow}">
-                                      <h6 id="less_margin">Przyjazne SEO</h6>
+                                      <h3 id="less_margin">Przyjazne SEO</h3>
                                       <span>
-                                       <img src="../../../assets/images/home_SEO.png">
+                                       <img src="../../../assets/images/home_SEO.png" alt="seo" title="seo">
                                     </span>
                                     </div>
                                     <div class="hiddenicon" [ngClass]="{'showicon': skillsiconsshow}">
-                                      <h6>Szybkie</h6>
+                                      <h3>Szybkie</h3>
                                       <span>
-                                       <img src="../../../assets/images/speed-icon-png-19.png" id="bigger_img">
+                                       <img src="../../../assets/images/speed-icon-png-19.png" id="bigger_img" alt="szybkie" title="szybkie aplikacje">
                                     </span>
                                     </div>
 

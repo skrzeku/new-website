@@ -32,7 +32,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
     trigger('hide_projects', [
       transition('* => void', [
         style({ opacity: '1', transform: 'scale3d(1, 1, 1)'}),
-          animate("0.5s ease-out", style({  opacity: 0, transform: 'scale3d(0.2, 0.2, 0.2)'  }))
+          animate('0.5s ease-out', style({  opacity: 0, transform: 'scale3d(0.2, 0.2, 0.2)'  }))
 
       ]),
         /*
@@ -104,10 +104,6 @@ export class ContentComponent implements OnInit, AfterViewInit{
 
 
 
-
-  BallElement;
-
-  private ctx: CanvasRenderingContext2D;
 
   state = 'hide';
   projects: Project[] = [
@@ -211,7 +207,6 @@ export class ContentComponent implements OnInit, AfterViewInit{
 
   ngOnInit() {
     this.BuildForm();
-    this.ctx = this.canvas.nativeElement.getContext('2d');
 
     const options = {
       strings: ['front-end <strong style="color: red">d</strong>eveloper', '<strong style="color: red">f</strong>ront-end developer'],
@@ -225,7 +220,6 @@ export class ContentComponent implements OnInit, AfterViewInit{
     const typed = new Typed('#typewrite', options);
 
 
-    //this.anotherAnimate();
 
   }
   ngAfterViewInit() {
@@ -328,52 +322,7 @@ export class ContentComponent implements OnInit, AfterViewInit{
     this.small_navi_bool = event;
   }
 
-  canvasAnimate() {
-    this.ctx.beginPath();
-    this.ctx.moveTo(20, 20); //stawiamy piórko w punkcie x: 20 y: 20
-    this.ctx.lineTo(30, 40); //zaczynamy rysować niewidzialną linię do x : 30, y: 40
-    this.ctx.lineTo(35, 10); //kolejna linia
-    this.ctx.lineTo(125, 30); //i kolejna
-    this.ctx.stroke();
 
-    this.ctx.beginPath();
-    this.ctx.moveTo(20, 20);
-    this.ctx.lineTo(125, 30);
-    this.ctx.stroke();
-
-    this.ctx.beginPath();
-    this.ctx.moveTo(80, 70);
-    this.ctx.lineTo(205, 40);
-    this.ctx.stroke();
-  }
-
-  anotherAnimate() {
-    const i = setInterval(() => {
-      this.ctx.beginPath();
-      this.ctx.moveTo(500, 500);
-      this.ctx.lineTo(155, 60);
-      this.ctx.moveTo(100, 100);
-      this.ctx.lineTo(30, 40);
-      this.ctx.stroke();
-    }, 800/15);
-  }
-
-
-  drawIt() {
-    requestAnimationFrame(() => this.drawIt());
-    this.ctx.clearRect(0,0, 300, 300);
-    this.ctx.fillStyle = "red";
-    if (this.x >= 300) {
-      this.x = -90;
-    }
-    this.ctx.fillRect(this.x,50,80,100);
-    this.x+=2;
-  }
-
-  rollIcons() {
-
-    this.contact_header_boolean = true;
-  }
   SetDefaultPosition() {
     const div_flow = document.querySelector('.active_filter');
     const pos = this.first_filter.nativeElement.offsetLeft;
@@ -414,32 +363,6 @@ export class ContentComponent implements OnInit, AfterViewInit{
   }
 
 
-  drawball () {
-    requestAnimationFrame(()=> this.drawball());
-
-      this.ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-      this.ctx.fillRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
-    this.ctx.beginPath();
-    this.ctx.arc(this.BallElement.x1, this.BallElement.y, this.BallElement.radius, 0, Math.PI * 2, true);
-    this.ctx.closePath();
-    this.ctx.fillStyle = this.BallElement.color;
-    this.ctx.fill();
-      this.BallElement.x1 += this.BallElement.vx;
-      this.BallElement.y += this.BallElement.vy;
-      this.BallElement.vy *= .99;
-      this.BallElement.vy += .25;
-
-      if (this.BallElement.y + this.BallElement.vy > this.canvas.nativeElement.height ||
-        this.BallElement.y + this.BallElement.vy < 0) {
-        this.BallElement.vy = -this.BallElement.vy;
-      }
-      if (this.BallElement.x1 + this.BallElement.vx > this.canvas.nativeElement.width ||
-        this.BallElement.x1 + this.BallElement.vx < 0) {
-        this.BallElement.vx = -this.BallElement.vx;
-      }
-
-
-  }
 
 
   onsucces(): void {
